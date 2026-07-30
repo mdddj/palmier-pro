@@ -78,7 +78,7 @@ struct ModelsPane: View {
     }
 
     private func sectionView(_ section: Section) -> some View {
-        SettingsSection(title: section.title) {
+        SettingsSection(title: LocalizedStringKey(stringLiteral: section.title)) {
             VStack(spacing: 0) {
                 ForEach(Array(section.rows.enumerated()), id: \.element.id) { index, row in
                     modelRow(row)

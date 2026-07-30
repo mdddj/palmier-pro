@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct EditorPanelGroup<Content: View, HeaderAccessory: View>: View {
-    let title: String
+    let title: LocalizedStringKey
     private let isExpanded: Binding<Bool>?
     private let contentSpacing: CGFloat
     private let contentInsets: EdgeInsets
@@ -11,7 +11,7 @@ struct EditorPanelGroup<Content: View, HeaderAccessory: View>: View {
     @State private var localIsExpanded = true
 
     init(
-        _ title: String,
+        _ title: LocalizedStringKey,
         isExpanded: Binding<Bool>? = nil,
         contentSpacing: CGFloat = AppTheme.Spacing.smMd,
         contentInsets: EdgeInsets = EdgeInsets(
@@ -58,7 +58,7 @@ struct EditorPanelGroup<Content: View, HeaderAccessory: View>: View {
             }
             .buttonStyle(.plain)
             .focusable(false)
-            .accessibilityLabel("\(expanded ? "Collapse" : "Expand") \(title)")
+            .accessibilityLabel(Text("\(expanded ? "Collapse" : "Expand") \(Mirror(reflecting: title).descendant("key") as? String ?? "")"))
 
             HStack(spacing: AppTheme.Spacing.sm) {
                 HStack(spacing: AppTheme.Spacing.sm) {
@@ -75,7 +75,7 @@ struct EditorPanelGroup<Content: View, HeaderAccessory: View>: View {
                 headerAccessory()
 
                 if let onReset {
-                    EditorResetButton(title: title, action: onReset)
+                    EditorResetButton(title: Mirror(reflecting: title).descendant("key") as? String ?? "", action: onReset)
                 }
             }
             .padding(.horizontal, AppTheme.Spacing.smMd)
@@ -115,7 +115,7 @@ struct EditorPanelGroup<Content: View, HeaderAccessory: View>: View {
 
 extension EditorPanelGroup where HeaderAccessory == EmptyView {
     init(
-        _ title: String,
+        _ title: LocalizedStringKey,
         isExpanded: Binding<Bool>? = nil,
         contentSpacing: CGFloat = AppTheme.Spacing.smMd,
         contentInsets: EdgeInsets = EdgeInsets(

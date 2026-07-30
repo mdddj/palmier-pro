@@ -6,7 +6,7 @@ struct MulticamTab: View {
 
     var body: some View {
         if let group = editor.multicamGroup(id: groupId) {
-            EditorPanelGroup(group.name.isEmpty ? "Multicam" : group.name) {
+            EditorPanelGroup(LocalizedStringKey(stringLiteral: group.name.isEmpty ? "Multicam" : group.name)) {
                 ForEach(group.members) { member in
                     memberRow(member, group: group)
                 }

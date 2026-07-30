@@ -160,7 +160,7 @@ struct InspectorView: View {
         title: String,
         @ViewBuilder content: @escaping () -> Content
     ) -> some View {
-        EditorPanelGroup(title, contentSpacing: AppTheme.Spacing.sm) {
+        EditorPanelGroup(LocalizedStringKey(stringLiteral: title), contentSpacing: AppTheme.Spacing.sm) {
             content()
         }
     }

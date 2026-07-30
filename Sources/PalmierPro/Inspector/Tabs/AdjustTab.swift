@@ -181,7 +181,7 @@ extension InspectorView {
     ) -> some View {
         let state = adjustSectionState(effectIds, clips: clips)
         EditorPanelGroup(
-            title,
+            LocalizedStringKey(stringLiteral: title),
             isExpanded: adjustSectionExpandedBinding(title),
             contentSpacing: AppTheme.Spacing.md,
             contentInsets: EdgeInsets(
@@ -230,17 +230,18 @@ extension InspectorView {
     }
 
     @ViewBuilder
-    private func adjustSubgroup(title: String, controls: [EffectControl], clips: [Clip]) -> some View {
-        let expanded = !collapsedAdjustSubgroups.contains(title)
+    private func adjustSubgroup(title: LocalizedStringKey, controls: [EffectControl], clips: [Clip]) -> some View {
+        let stringKey = localizedKeyString(title)
+        let expanded = !collapsedAdjustSubgroups.contains(stringKey)
         VStack(alignment: .leading, spacing: AppTheme.Spacing.xs) {
             HStack(spacing: AppTheme.Spacing.xs) {
                 Image(systemName: expanded ? "chevron.down" : "chevron.right")
                     .font(.system(size: AppTheme.FontSize.xxs))
                     .foregroundStyle(AppTheme.Text.mutedColor)
                     .frame(width: AppTheme.IconSize.xxs, alignment: .center)
-                adjustSubgroupTitleLabel(title: title)
+            adjustSubgroupTitleLabel(title: title)
                 Spacer(minLength: 0)
-                if title == "Chroma Key", clips.count == 1, let clip = clips.first {
+                if stringKey == "Chroma Key", clips.count == 1, let clip = clips.first {
                     let sampling = editor.chromaKeySamplingClipId == clip.id
                     Button { editor.toggleChromaKeySampling(clipId: clip.id) } label: {
                         Image(systemName: "eyedropper")
@@ -255,8 +256,8 @@ extension InspectorView {
             .padding(.leading, adjustSubgroupInset)
             .contentShape(Rectangle())
             .onTapGesture {
-                if expanded { collapsedAdjustSubgroups.insert(title) }
-                else { collapsedAdjustSubgroups.remove(title) }
+                if expanded { collapsedAdjustSubgroups.insert(stringKey) }
+                else { collapsedAdjustSubgroups.remove(stringKey) }
             }
             if expanded {
                 VStack(alignment: .leading, spacing: AppTheme.Spacing.xs) {
@@ -268,11 +269,15 @@ extension InspectorView {
         }
     }
 
-    private func adjustSubgroupTitleLabel(title: String) -> some View {
+    private func adjustSubgroupTitleLabel(title: LocalizedStringKey) -> some View {
         Text(title)
             .font(.system(size: AppTheme.FontSize.sm, weight: AppTheme.FontWeight.medium))
             .foregroundStyle(AppTheme.Text.secondaryColor)
             .fixedSize()
+    }
+
+    private func localizedKeyString(_ key: LocalizedStringKey) -> String {
+        Mirror(reflecting: key).descendant("key") as? String ?? ""
     }
 
     private func adjustRowLabel(_ title: String, inset: CGFloat) -> some View {
@@ -288,7 +293,7 @@ extension InspectorView {
         HStack(spacing: AppTheme.Spacing.xs) {
             Color.clear
                 .frame(width: AppTheme.IconSize.xxs, height: AppTheme.IconSize.xxs)
-            adjustSubgroupTitleLabel(title: title)
+            adjustSubgroupTitleLabel(title: LocalizedStringKey(stringLiteral: title))
             Spacer(minLength: 0)
             Toggle("", isOn: isOn)
                 .toggleStyle(.checkbox)

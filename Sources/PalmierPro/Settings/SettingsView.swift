@@ -162,7 +162,7 @@ private struct SettingsDetail: View {
 }
 
 struct SettingsSection<Content: View>: View {
-    let title: String
+    let title: LocalizedStringKey
     @ViewBuilder let content: () -> Content
 
     var body: some View {
@@ -183,7 +183,7 @@ struct SettingsSection<Content: View>: View {
 }
 
 struct SettingsGroup<Content: View>: View {
-    let title: String
+    let title: LocalizedStringKey
     @ViewBuilder let content: () -> Content
 
     var body: some View {
@@ -197,8 +197,8 @@ struct SettingsGroup<Content: View>: View {
 }
 
 struct SettingsToggleRow: View {
-    let title: String
-    let subtitle: String
+    let title: LocalizedStringKey
+    let subtitle: LocalizedStringKey
     @Binding var isOn: Bool
 
     var body: some View {

@@ -369,7 +369,7 @@ struct TextStyleControls<AfterAlignment: View, AfterColor: View>: View {
     ) -> some View {
         let enabled = selection.value(enabledKeyPath)
         return EditorPanelGroup(
-            title,
+            LocalizedStringKey(stringLiteral: title),
             isExpanded: isExpanded,
             onReset: {
                 debounceKeys.forEach(actions.cancelPending)
