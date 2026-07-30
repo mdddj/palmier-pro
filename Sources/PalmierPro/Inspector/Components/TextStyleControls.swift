@@ -359,7 +359,7 @@ struct TextStyleControls<AfterAlignment: View, AfterColor: View>: View {
     }
 
     private func decorationGroup<Content: View>(
-        _ title: String,
+        _ title: LocalizedStringKey,
         isExpanded: Binding<Bool>,
         fitToContent: Bool = false,
         enabledKeyPath: WritableKeyPath<TextStyle, Bool>,
@@ -369,7 +369,7 @@ struct TextStyleControls<AfterAlignment: View, AfterColor: View>: View {
     ) -> some View {
         let enabled = selection.value(enabledKeyPath)
         return EditorPanelGroup(
-            LocalizedStringKey(stringLiteral: title),
+            title,
             isExpanded: isExpanded,
             onReset: {
                 debounceKeys.forEach(actions.cancelPending)

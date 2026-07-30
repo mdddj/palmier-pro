@@ -33,7 +33,7 @@ struct InspectorRow<Trailing: View>: View {
 
     private var row: some View {
         HStack(alignment: .center, spacing: AppTheme.Spacing.sm) {
-            Text(label)
+            Text(LocalizedStringKey(label))
                 .font(.system(size: AppTheme.FontSize.sm, weight: AppTheme.FontWeight.regular))
                 .foregroundStyle(AppTheme.Text.secondaryColor)
                 .lineLimit(1)

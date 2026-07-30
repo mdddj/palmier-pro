@@ -1,9 +1,15 @@
 /* ==================== Account ==================== */
 
+"Account" = "账户";
 "= 1 credit" = "= 1 积分";
 "= \(credits.formatted()) credits" = "= \(credits.formatted()) 积分";
 "/ month" = "/月";
 "Manage credits" = "管理积分";
+"Agent" = "AI";
+"General" = "通用";
+"Models" = "模型";
+"Skills" = "技能";
+"Storage" = "存储空间";
 
 /* ==================== Agent Panel ==================== */
 
@@ -85,6 +91,9 @@
 "Generate Captions" = "生成字幕";
 "Language" = "语言";
 "Max words" = "最大字数";
+"Mode" = "模式";
+"No audio" = "无音频";
+"No track" = "无轨道";
 "No Tracks" = "无轨道";
 "None" = "无";
 "Placement" = "位置";
