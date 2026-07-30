@@ -16,7 +16,6 @@
 "Fill prompt" = "填充提示词";
 "New chat" = "新对话";
 "No conversations yet" = "暂无对话";
-"No matches for \"\(query)\"" = "未找到 \"\(query)\" 的匹配项";
 "Scroll to latest" = "滚动到最新";
 "Send" = "发送";
 "Stop" = "停止";
@@ -315,7 +314,6 @@
 "Move to Folder" = "移至文件夹";
 "No media yet" = "暂无媒体";
 "Organize with Agent" = "让 Agent 整理";
-"Pick a replacement for \"\(editor.pendingSwapClipName ?? "clip")\"" = "为 \"\(editor.pendingSwapClipName ?? "片段")\" 选择替换";
 "PiP Bottom Left" = "画中画 左下";
 "PiP Bottom Right" = "画中画 右下";
 "PiP Top Left" = "画中画 左上";
@@ -358,7 +356,6 @@
 "Back" = "后退";
 "Capture Frame to Media" = "将帧捕获到媒体";
 "Choose the folder that holds your media" = "选择包含媒体文件的文件夹";
-"Choose the source file for \"\(asset.name)\"" = "选择 \"\(asset.name)\" 对应的源文件";
 "Choose the source file for this clip" = "选择此片段对应的源文件";
 "Close All Tabs" = "关闭所有标签页";
 "Close Other Tabs" = "关闭其他标签页";
@@ -422,7 +419,6 @@
 "Media indexing" = "媒体索引";
 "More skill actions" = "更多技能操作";
 "New skill" = "新建技能";
-"No models match \"\(query)\"." = "未找到匹配 \"\(query)\" 的模型。";
 "Notifications" = "通知";
 "Open Skills Folder" = "打开技能文件夹";
 "Playback previews, waveforms, filmstrip thumbnails, and transcripts. Safe to clear; files rebuild as needed." = "播放预览、波形图、胶片缩略图和转录文本。可以安全清除；文件会按需重建。";
@@ -532,7 +528,6 @@
 
 "Beat detection failed. Check that the media file is reachable, then retry." = "节拍检测失败。请检查媒体文件是否可访问，然后重试。";
 "Can't delete every timeline — the project needs at least one." = "无法删除所有时间线 — 项目至少需要一个。";
-"Can't nest \"\(child.name)\" — it would contain itself." = "无法嵌套 \"\(child.name)\" — 它将包含自身。";
 "Can't slip a multicam clip — it would go out of sync with the group." = "无法滑动多机位片段 — 它会与编组不同步。";
 "Couldn't switch angle." = "无法切换角度。";
 "Detected \(bpm)\(count) beats." = "检测到 \(bpm)\(count) 个节拍。";
@@ -544,17 +539,9 @@
 /* ==================== Other Toast ==================== */
 
 "Can't change speed on a multicam clip — it would slip out of sync with the group." = "无法更改多机位片段的速度 — 它会与编组不同步。";
-"Can't import \"\(name)\" — not a Lottie animation." = "无法导入 \"\(name)\" — 不是 Lottie 动画。";
 "Can't move a multicam camera clip to another track — the group's program track stays fixed." = "无法将多机位摄像机片段移动到其他轨道 — 编组的节目轨道保持固定。";
-"Can't move part of multicam group \"\(name)\" — its clips stay in sync and move together." = "无法移动多机位编组 \"\(name)\" 的部分内容 — 其片段保持同步并一起移动。";
-"Can't relink — \"\(newURL.lastPathComponent)\" is \(newType.trackLabel.lowercased()), not \(asset.type.trackLabel.lowercased())." = "无法重新链接 — \"\(newURL.lastPathComponent)\" 是\(newType.trackLabel.lowercased())，而不是\(asset.type.trackLabel.lowercased())。";
-"Can't ripple through multicam group \"\(group.name)\" — split its clips at the edit point, or remove silence/words to cut time." = "无法波纹编辑多机位编组 \"\(group.name)\" — 在编辑点分割其片段，或移除静音/单词以缩短时间。";
-"Can't shift part of multicam group \"\(name)\" — \(stranded.joined(separator: ", ")) would stay behind and desync." = "无法移动多机位编组 \"\(name)\" 的部分内容 — \(stranded.joined(separator: ", ")) 将保留在原位并失去同步。";
 "Can't swap — pick \(clip.mediaType.trackLabel.lowercased()) media to replace this clip." = "无法替换 — 选择\(clip.mediaType.trackLabel.lowercased())媒体来替换此片段。";
-"Can't unlock sync on a multicam track — \"\(group.name)\" stays aligned through it." = "无法解锁多机位轨道的同步 — \"\(group.name)\" 通过它保持对齐。";
 "Nest settings discarded. Undo to restore." = "嵌套设置已丢弃。撤销以恢复。";
-"Sync-locked track \"\(label)\" doesn't have room to ripple." = "同步锁定的轨道 \"\(label)\" 没有空间进行波纹编辑。";
-
 /* ==================== Tour ==================== */
 
 "Next" = "下一步";
