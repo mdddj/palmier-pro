@@ -1,6 +1,612 @@
-/* Agent panel — signed-out / no-credits state */
+/* ==================== Account ==================== */
+
+"= 1 credit" = "= 1 积分";
+"= \(credits.formatted()) credits" = "= \(credits.formatted()) 积分";
+"/ month" = "/月";
+"Manage credits" = "管理积分";
+
+/* ==================== Agent Panel ==================== */
+
+"Add to chat" = "添加到对话";
+"Ask anything, or start with:" = "随意提问，或从以下开始：";
+"Ask, or type @ to reference media" = "提问，或输入 @ 引用媒体";
+"Chat history" = "对话历史";
+"Copy message" = "复制消息";
+"Delete from history" = "从历史中删除";
+"Fill prompt" = "填充提示词";
+"New chat" = "新对话";
+"No conversations yet" = "暂无对话";
+"No matches for \"\(query)\"" = "未找到 \"\(query)\" 的匹配项";
+"Scroll to latest" = "滚动到最新";
+"Send" = "发送";
+"Stop" = "停止";
+"Streaming through your Anthropic API key (BYOK)" = "通过您的 Anthropic API 密钥传输 (BYOK)";
+"used" = "已使用";
+"using API key" = "使用 API 密钥";
+
+/* ==================== Agent Settings ==================== */
+
+"Anthropic API Key" = "Anthropic API 密钥";
+"Get Anthropic API key" = "获取 Anthropic API 密钥";
+"Manual setup" = "手动设置";
+"MCP Server" = "MCP 服务器";
+"Remove API key" = "移除 API 密钥";
+"Running on" = "运行于";
+"Save" = "保存";
+"Save Changes" = "保存更改";
+"Setup instructions" = "设置说明";
+"Stopped" = "已停止";
+"Try again." = "请重试。";
+"Unable to open Claude Desktop" = "无法打开 Claude Desktop";
+"Use your own API key for AI chat. Stored in the macOS Keychain." = "使用您自己的 API 密钥进行 AI 对话。存储在 macOS 钥匙串中。";
+"Lets external clients like Cursor, Claude Desktop, Claude Code, and Codex edit your timeline." = "允许外部客户端（如 Cursor、Claude Desktop、Claude Code、Codex）编辑您的时间线。";
+"Connect an external agent to inspect and edit the open Palmier Pro project." = "连接外部 agent 以检查和编辑已打开的 Palmier Pro 项目。";
+"127.0.0.1:\(String(MCPService.port))" = "127.0.0.1:\(String(MCPService.port))";
+
+/* ==================== App / General ==================== */
+
+"About Palmier Pro" = "关于 Palmier Pro";
+"Check for Updates…" = "检查更新…";
+"Click to install update" = "点击安装更新";
+"Continue" = "继续";
+"Export complete" = "导出完成";
+"Export failed" = "导出失败";
+"Full changelog" = "完整更新日志";
+"Generation complete" = "生成完成";
+"New Project" = "新建项目";
+"New version available" = "有新版本可用";
+"Open Project" = "打开项目";
+"Palmier Pro" = "Palmier Pro";
+"Quit Palmier Pro" = "退出 Palmier Pro";
+"Restart Palmier Pro to apply this change." = "重启 Palmier Pro 以应用此更改。";
+"Settings…" = "设置…";
+"Update" = "更新";
+"What's New in v\(entry.version)" = "v\(entry.version) 更新日志";
+
+/* ==================== Audio ==================== */
+
+"Audio" = "音频";
+"Blends denoised and original audio — lower this if voices sound thin or over-compressed." = "混合降噪后和原始音频 — 如果人声听起来单薄或过度压缩，请降低此值。";
+"Choose Audio" = "选择音频";
+"Denoise" = "降噪";
+"Denoise failed. Playback uses the original audio — adjust Strength to retry." = "降噪失败。播放使用原始音频 — 调整强度以重试。";
+"Enhance" = "增强";
+"Levels" = "电平";
+"Master Audio Meter" = "主音频电平表";
+"Removing background noise…" = "正在去除背景噪音…";
+"Removes background noise from this audio using an on-device model." = "使用设备端模型从此音频中去除背景噪音。";
+"Reset Clipping Indicators" = "重置削波指示器";
+
+/* ==================== Captions ==================== */
+
+"\(cost)" = "\(cost)";
+"Add emoji" = "添加表情符号";
+"Censor profanity" = "屏蔽不当用语";
+"Fix names & jargon" = "修正名称和术语";
+"Generate Captions" = "生成字幕";
+"Language" = "语言";
+"Max words" = "最大字数";
+"No Tracks" = "无轨道";
+"None" = "无";
+"Placement" = "位置";
+"Remove filler words" = "移除语气词";
+"Source" = "来源";
+"Translate" = "翻译";
+
+/* ==================== Edit Menu ==================== */
+
+"Copy" = "复制";
+"Cut" = "剪切";
+"Delete" = "删除";
+"Edit" = "编辑";
+"Paste" = "粘贴";
+"Redo" = "重做";
+"Redo (⇧⌘Z)" = "重做 (⇧⌘Z)";
+"Ripple Delete" = "波纹删除";
+"Select All" = "全选";
+"Select Forward on All Tracks" = "所有轨道向前选择";
+"Select Forward on Track" = "轨上向前选择";
+"Split at Playhead" = "在播放头处分割";
+"Trim End to Playhead" = "裁剪结尾至播放头";
+"Trim Start to Playhead" = "裁剪开头至播放头";
+"Undo" = "撤销";
+"Undo (⌘Z)" = "撤销 (⌘Z)";
+
+/* ==================== Export ==================== */
+
+"Saves a copy of this project with all media bundled inside, so it opens on any machine." = "保存项目的副本并包含所有媒体文件，可在任何机器上打开。";
+"Add to Queue" = "添加到队列";
+"Cancel Export" = "取消导出";
+"Clear Finished" = "清除已完成";
+"Close" = "关闭";
+"Codec" = "编解码器";
+"Compatibility: \(format.compatibilityLabel)" = "兼容性：\(format.compatibilityLabel)";
+"Couldn't encode the timeline as XML" = "无法将时间线编码为 XML";
+"Destination" = "目标位置";
+"Dismiss" = "忽略";
+"Export" = "导出";
+"Export preset not supported on this system" = "当前系统不支持此导出预设";
+"Export produced no output." = "导出未产生输出。";
+"Export Queue" = "导出队列";
+"Export, \(activeCount) active, \(waitingCount) waiting" = "导出，\(activeCount) 个进行中，\(waitingCount) 个等待中";
+"FCPXML" = "FCPXML";
+"File Type" = "文件类型";
+"For" = "用于";
+"Frame Rate" = "帧率";
+"Invalid export format" = "无效的导出格式";
+"No exports yet" = "暂无导出";
+"Palmier Project" = "Palmier 项目";
+"Remove from Queue" = "从队列中移除";
+"Resolution" = "分辨率";
+"Timeline Format" = "时间线格式";
+"Version" = "版本";
+"Video" = "视频";
+"XMEML" = "XMEML";
+"An export to \(filename) is already waiting or in progress." = "导出到 \(filename) 的任务已在等待或进行中。";
+
+/* ==================== Feedback ==================== */
+
+"Add an email above to enable a reply" = "在上方添加电子邮件以启用回复";
+"Cancel" = "取消";
+"Done" = "完成";
+"Include screenshot" = "包含截图";
+"Sending…" = "正在发送…";
+"Thanks for the feedback." = "感谢您的反馈。";
+"We may email you for follow-up questions" = "我们可能会通过电子邮件跟进问题";
+"you@example.com — so we can reply" = "you@example.com — 以便我们回复";
+
+/* ==================== File Menu ==================== */
+
+"Export…" = "导出…";
+"File" = "文件";
+"Import Media…" = "导入媒体…";
+"New" = "新建";
+"New Folder" = "新建文件夹";
+"Open…" = "打开…";
+"Save As…" = "另存为…";
+"Select media files or folders to import" = "选择要导入的媒体文件或文件夹";
+
+/* ==================== Generation ==================== */
+
+"\(title) (Paid)" = "\(title)（付费）";
+"\(n)" = "\(n)";
+"Add Music" = "添加音乐";
+"Add Sound Effects" = "添加音效";
+"Clean Up Voice…" = "清理人声…";
+"Create matching sound for the video" = "为视频创建匹配的音效";
+"Create Video" = "创建视频";
+"Dub…" = "配音…";
+"Edit…" = "编辑…";
+"Edit… (Paid)" = "编辑…（付费）";
+"Generate" = "生成";
+"Generate Music" = "生成音乐";
+"Generate Music…" = "生成音乐…";
+"Generate music that fits the video" = "生成适合视频的音乐";
+"Generate SFX" = "生成音效";
+"Generate SFX…" = "生成音效…";
+"Lip Sync…" = "口型同步…";
+"Lip Sync… (Paid)" = "口型同步…（付费）";
+"No Adjustments" = "无调整";
+"No generations yet" = "暂无生成";
+"No matches" = "无匹配项";
+"Project Activity" = "项目活动";
+"Reframe…" = "重新构图…";
+"Reframe… (Paid)" = "重新构图…（付费）";
+"Rerun" = "重新运行";
+"Set as first frame" = "设为起始帧";
+"Set as reference" = "设为参考";
+"Target Language" = "目标语言";
+"Turn off to skip audio generation." = "关闭以跳过音频生成。";
+"Upscale…" = "放大…";
+"Upscale… (Paid)" = "放大…（付费）";
+"Use for non-English or mixed-language audio." = "用于非英语或混合语言音频。";
+"Voice" = "声音";
+"\(VideoToAudioEditKind.music.title)…" = "\(VideoToAudioEditKind.music.title)…";
+"\(VideoToAudioEditKind.sfx.title)…" = "\(VideoToAudioEditKind.sfx.title)…";
+
+/* ==================== Generation / AI Edit tab ==================== */
+
+"Add generated audio to an audio track at this clip's start." = "将生成的音频添加到该片段起始位置的音频轨道。";
+"Send only the visible clip range to the model, not the full source." = "仅将可见的片段范围发送给模型，而不是完整源文件。";
+"Swap the clip's media when generation completes. Speed, volume, trim, and transform are preserved." = "生成完成后替换片段的媒体。速度、音量、裁剪和变换将被保留。";
+
+/* ==================== Global ==================== */
+
+"Drag to add or shape a point · double-click to remove" = "拖拽添加或调整点 · 双击移除";
+"Loading community skills…" = "正在加载社区技能…";
+
+/* ==================== Help Menu ==================== */
+
+"Help" = "帮助";
+"Keyboard Shortcuts" = "键盘快捷键";
+"MCP Instructions" = "MCP 说明";
+"Send Feedback…" = "发送反馈…";
+"Tutorial" = "教程";
+
+/* ==================== Inspector ==================== */
+
+"\(editor.selectedClipIds.count) selected" = "已选择 \(editor.selectedClipIds.count) 个";
+"Add keyframe at playhead" = "在播放头处添加关键帧";
+"AI" = "AI";
+"AI Audio" = "AI 音频";
+"AI Enhance" = "AI 增强";
+"Basic Correction" = "基本校正";
+"Blur" = "模糊";
+"Cancel key color sampling" = "取消键控颜色取样";
+"Chroma Key" = "色度抠像";
+"Choose a .cube LUT file" = "选择 .cube LUT 文件";
+"Choose a crop aspect" = "选择裁剪比例";
+"Choose…" = "选择…";
+"Clip" = "片段";
+"Color Wheels" = "色轮";
+"Copied" = "已复制";
+"Copy prompt" = "复制提示词";
+"Crop applies to one clip at a time" = "裁剪一次应用于一个片段";
+"Curves" = "曲线";
+"Custom…" = "自定义…";
+"Detail" = "细节";
+"Edit crop on canvas" = "在画布上编辑裁剪";
+"Effects" = "效果";
+"Film Grain" = "胶片颗粒";
+"Flip horizontally" = "水平翻转";
+"Flip vertically" = "垂直翻转";
+"Generated" = "已生成";
+"Glow" = "发光";
+"Go to next keyframe" = "转到下一个关键帧";
+"Go to previous keyframe" = "转到上一个关键帧";
+"Hide keyframe timeline" = "隐藏关键帧时间线";
+"Hue Curves" = "色相曲线";
+"Image Adjustment" = "图像调整";
+"Keyframes" = "关键帧";
+"LUTs" = "LUT";
+"Motion Blur" = "运动模糊";
+"Move playhead inside the clip" = "将播放头移至片段内";
+"Multicam" = "多机位";
+"Playback" = "播放";
+"Presence" = "存在感";
+"Project" = "项目";
+"Prompt" = "提示词";
+"References" = "参考";
+"Remove horizontal flip" = "移除水平翻转";
+"Remove keyframe at playhead" = "移除播放头处的关键帧";
+"Remove vertical flip" = "移除垂直翻转";
+"Sample key color" = "取样键控颜色";
+"Select a single clip to enable" = "选择单个片段以启用";
+"Settings" = "设置";
+"Show keyframe timeline" = "显示关键帧时间线";
+"Stop editing crop on canvas" = "停止画布裁剪编辑";
+"Tone" = "色调";
+"Transform" = "变换";
+"Vignette" = "暗角";
+"White Balance" = "白平衡";
+
+/* ==================== Media Errors ==================== */
+
+"Downloads a ... on-device model so you can search media visually." = "下载...设备端模型以便您可以视觉搜索媒体。";
+"Master — defines the group's clock and transcript." = "主时间线 — 定义编组的时钟和转录。";
+"Matches voices across clips, transcribing untranscribed timeline clips first (uses credits). Transcripts and voice fingerprints are cached, so re-runs are fast." = "匹配片段间的人声，首先转录尚未转录的时间线片段（使用积分）。转录文本和人声指纹会被缓存，重新运行速度很快。";
+"Not synced — unusable as an angle." = "未同步 — 无法用作角度。";
+"Palmier couldn't load this source file. It may be missing, on an ejected drive, or unreadable." = "Palmier 无法加载此源文件。文件可能丢失、位于已弹出的驱动器或无法读取。";
+"Removes this label and tint. Identify recreates it if the voice is still present." = "移除此标签和着色。如果人声仍存在，识别功能会重新创建。";
+"Visual search model download failed. Check your connection and try again." = "视觉搜索模型下载失败。请检查您的连接并重试。";
+
+/* ==================== Media Panel ==================== */
+
+"\"\(dims.width) × \(dims.height)\"" = "\(dims.width) × \(dims.height)";
+"\(childCount)" = "\(childCount)";
+"Add to \(agent.label)" = "添加到 \(agent.label)";
+"Add to External Agent" = "添加到外部 Agent";
+"AI Generated" = "AI 生成";
+"Clear Filters" = "清除筛选";
+"Collapse" = "折叠";
+"Copy Path" = "复制路径";
+"Create Matte" = "创建遮罩";
+"Creating…" = "正在创建…";
+"Drop files here or import from disk" = "将文件拖放到此处或从磁盘导入";
+"Empty" = "空";
+"Expand" = "展开";
+"Failed" = "失败";
+"Full Frame" = "填充画面";
+"Grid 2×2" = "2×2 网格";
+"Grid 3×3" = "3×3 网格";
+"Grid 4×4" = "4×4 网格";
+"Library" = "媒体库";
+"Main + Sidebar" = "主视图 + 侧边栏";
+"Move to Folder" = "移至文件夹";
+"No media yet" = "暂无媒体";
+"Organize with Agent" = "让 Agent 整理";
+"Pick a replacement for \"\(editor.pendingSwapClipName ?? "clip")\"" = "为 \"\(editor.pendingSwapClipName ?? "片段")\" 选择替换";
+"PiP Bottom Left" = "画中画 左下";
+"PiP Bottom Right" = "画中画 右下";
+"PiP Top Left" = "画中画 左上";
+"PiP Top Right" = "画中画 右上";
+"Relink…" = "重新链接…";
+"Search" = "搜索";
+"Side by Side" = "并排";
+"Thumbnail Size" = "缩略图大小";
+"Three-Up" = "三画面";
+"Top / Bottom" = "上 / 下";
+"View" = "视图";
+
+/* ==================== Misc ==================== */
+
+"All timelines" = "所有时间线";
+"Loading…" = "加载中…";
+"Model" = "模型";
+"Show in Finder" = "在访达中显示";
+"Subscribe" = "订阅";
+
+/* ==================== Music ==================== */
+
+"Auto" = "自动";
+"Detect Beats" = "检测节拍";
+"Duration" = "时长";
+"Generate audio" = "生成音频";
+"Generate music for the timeline" = "为时间线生成音乐";
+"Instrumental" = "纯器乐";
+"Input" = "输入";
+"Mood" = "情绪";
+"Multilingual" = "多语言";
+"Music" = "音乐";
+"Synchronize" = "同步";
+"Text to Music" = "文字转音乐";
+"Timecode" = "时间码";
+"Video to Music" = "视频转音乐";
+
+/* ==================== Preview ==================== */
+
+"Back" = "后退";
+"Capture Frame to Media" = "将帧捕获到媒体";
+"Choose the folder that holds your media" = "选择包含媒体文件的文件夹";
+"Choose the source file for \"\(asset.name)\"" = "选择 \"\(asset.name)\" 对应的源文件";
+"Choose the source file for this clip" = "选择此片段对应的源文件";
+"Close All Tabs" = "关闭所有标签页";
+"Close Other Tabs" = "关闭其他标签页";
+"Close Tab" = "关闭标签页";
+"Couldn't Prepare Media" = "无法准备媒体";
+"Forward" = "前进";
+"Generation Failed" = "生成失败";
+"Media Offline" = "媒体离线";
+"More" = "更多";
+"Preview" = "预览";
+"Relink Folder…" = "重新链接文件夹…";
+"Relinked \(result.relinked) of \(result.total) offline clips." = "已重新链接 \(result.relinked)/\(result.total) 个离线片段。";
+"Report a Problem" = "报告问题";
+"Retry Download" = "重试下载";
+
+/* ==================== Project Settings ==================== */
+
+"Apply" = "应用";
+"Change to Match" = "更改为匹配";
+"Clip Settings Mismatch" = "片段设置不匹配";
+"Custom Aspect Ratio" = "自定义宽高比";
+"FPS" = "帧率";
+"Keep Current" = "保持当前";
+"Changing the ratio preserves the shorter edge." = "更改比例将保持较短边不变。";
+"The clip you're adding has different settings than the current project." = "您添加的片段设置与当前项目不同。";
+
+/* ==================== Reset ==================== */
+
+"Reset \(title)" = "重置\(title)";
+"Reset \(title.lowercased())" = "重置\(title.lowercased())";
+
+/* ==================== Settings Panes ==================== */
+
+"Account settings" = "账户设置";
+"Add models…" = "添加模型…";
+"Add nonempty name and description fields to the skill frontmatter." = "在技能前置元数据中添加非空的名称和描述字段。";
+"Added to \(toast.agentLabel)" = "已添加到 \(toast.agentLabel)";
+"AI Chat" = "AI 对话";
+"Cache" = "缓存";
+"Cancels \(date)" = "于 \(date) 取消";
+"Clear cache" = "清除缓存";
+"Clear index" = "清除索引";
+"Connect an agent" = "连接 agent";
+"Credits" = "积分";
+"Credits cover AI generation and chat." = "积分用于 AI 生成和对话。";
+"Delete \u{201C}\(skill.name)\u{201D}" = "删除\u{201C}\(skill.name)\u{201D}";
+"Delete Skill" = "删除技能";
+"Description" = "描述";
+"Discard Changes" = "放弃更改";
+"Image" = "图像";
+"Index" = "索引";
+"Indexes imported media for on-device search." = "索引导入的媒体以支持设备端搜索。";
+"Install skills to give the in-app agent specialized workflows." = "安装技能，为内置 agent 提供专业化工作流。";
+"Instructions" = "指令";
+"Integrations" = "集成";
+"Keep Editing" = "继续编辑";
+"Keep Skill" = "保留技能";
+"Loading models…" = "正在加载模型…";
+"Local" = "本地";
+"Manage subscription" = "管理订阅";
+"Media indexing" = "媒体索引";
+"More skill actions" = "更多技能操作";
+"New skill" = "新建技能";
+"No models match \"\(query)\"." = "未找到匹配 \"\(query)\" 的模型。";
+"Notifications" = "通知";
+"Open Skills Folder" = "打开技能文件夹";
+"Playback previews, waveforms, filmstrip thumbnails, and transcripts. Safe to clear; files rebuild as needed." = "播放预览、波形图、胶片缩略图和转录文本。可以安全清除；文件会按需重建。";
+"Privacy & Diagnostics" = "隐私与诊断";
+"Refresh Community Skills" = "刷新社区技能";
+"Remove model" = "移除模型";
+"Rename Skill" = "重命名技能";
+"Resets \(date)" = "于 \(date) 重置";
+"Search models" = "搜索模型";
+"Search skills" = "搜索技能";
+"Server URL" = "服务器 URL";
+"Sign in to subscribe and use AI generation." = "登录以订阅并使用 AI 生成功能。";
+"Sign out" = "退出登录";
+"Skill actions" = "技能操作";
+"Skill name" = "技能名称";
+"Skill unavailable." = "技能不可用。";
+"Subscription" = "订阅";
+"Temporary files" = "临时文件";
+"This permanently removes \(displayPath(skill))." = "这将永久移除 \(displayPath(skill))。";
+"Unable to save skill" = "无法保存技能";
+"Upgrade" = "升级";
+"Upgrade to Max" = "升级至 Max";
+"Upgrade to Pro" = "升级至 Pro";
+"View Skills" = "查看技能";
+"Add this skill to an external agent" = "将此技能添加到外部 agent";
+
+/* ==================== Shortcuts ==================== */
+
+"Editing" = "编辑";
+"Timeline" = "时间线";
+"Tools" = "工具";
+
+/* ==================== Speech ==================== */
+
+"\(count) sections" = "\(count) 段";
+"\(currentFolderItemCount) items" = "\(currentFolderItemCount) 项";
+"1 item" = "1 项";
+"1 section" = "1 段";
+"Identify Speakers" = "识别说话人";
+"Labels" = "标签";
+"Mark Silence" = "标记静音";
+"Mark Speakers" = "标记说话人";
+"Name" = "名称";
+"Refresh" = "刷新";
+"Remove" = "移除";
+"Ripple-deletes every silent section; downstream clips close the gaps." = "波纹删除所有静音段落；后续片段闭合间隙。";
+"Silence Detection" = "静音检测";
+"Speakers" = "说话人";
+
+/* ==================== Text / Title ==================== */
+
+"All fonts" = "所有字体";
+"Animation" = "动画";
+"Background" = "背景";
+"Featured" = "精选";
+"Mixed" = "混合";
+"Outline" = "描边";
+"Shadow" = "阴影";
+"Style" = "样式";
+"Text" = "文本";
+
+/* ==================== Timeline ==================== */
+
+"Add Range to Chat" = "将范围添加到对话";
+"Add Text" = "添加文本";
+"Add to Chat" = "添加到对话";
+"Agent Mode" = "Agent 模式";
+"AI Edit" = "AI 编辑";
+"Clear Range" = "清除范围";
+"Create AI Transition" = "创建 AI 转场";
+"Create Nested Timeline" = "创建嵌套时间线";
+"Decompose Nested Timeline" = "分解嵌套时间线";
+"Delete Keyframe" = "删除关键帧";
+"Delete Timeline" = "删除时间线";
+"Duplicate" = "复制";
+"Export (⌘E)" = "导出 (⌘E)";
+"Hold" = "保持";
+"Linear" = "线性";
+"Link" = "链接";
+"Mark Beats" = "标记节拍";
+"New timeline" = "新建时间线";
+"Open Timeline" = "打开时间线";
+"Pointer (V)" = "选择工具 (V)";
+"Razor (C)" = "剃刀工具 (C)";
+"Redetect Beats" = "重新检测节拍";
+"Remove Dead Air" = "移除死区";
+"Rename" = "重命名";
+"Ripple Delete Gap" = "波纹删除间隙";
+"Save as Media" = "保存为媒体";
+"Save Range as Media" = "将范围保存为媒体";
+"Smooth" = "平滑";
+"Split at Playhead (⌘K)" = "在播放头处分割 (⌘K)";
+"Swap Media" = "替换媒体";
+"Switch Angle" = "切换角度";
+"Switch Angle in Range" = "范围内切换角度";
+"Switch Mic" = "切换麦克风";
+"Toggle Agent Panel" = "切换 Agent 面板";
+"Trim End to Playhead (W)" = "裁剪结尾至播放头 (W)";
+"Trim Start to Playhead (Q)" = "裁剪开头至播放头 (Q)";
+"Trim (T)" = "裁剪工具 (T)";
+"Ungroup Multicam" = "取消多机位编组";
+"Unlink" = "取消链接";
+"Zoom In" = "放大";
+"Zoom Out" = "缩小";
+
+/* ==================== Toast / Notification Messages ==================== */
+
+"Beat detection failed. Check that the media file is reachable, then retry." = "节拍检测失败。请检查媒体文件是否可访问，然后重试。";
+"Can't delete every timeline — the project needs at least one." = "无法删除所有时间线 — 项目至少需要一个。";
+"Can't nest \"\(child.name)\" — it would contain itself." = "无法嵌套 \"\(child.name)\" — 它将包含自身。";
+"Can't slip a multicam clip — it would go out of sync with the group." = "无法滑动多机位片段 — 它会与编组不同步。";
+"Couldn't switch angle." = "无法切换角度。";
+"Detected \(bpm)\(count) beats." = "检测到 \(bpm)\(count) 个节拍。";
+"Frame capture failed: \(error.localizedDescription)" = "帧捕获失败：\(error.localizedDescription)";
+"No beats detected." = "未检测到节拍。";
+"Synchronizing…" = "正在同步…";
+"The gap is no longer available, so the transition will land in Media instead." = "间隙不再可用，因此转场将放入媒体库。";
+
+/* ==================== Other Toast ==================== */
+
+"Can't change speed on a multicam clip — it would slip out of sync with the group." = "无法更改多机位片段的速度 — 它会与编组不同步。";
+"Can't import \"\(name)\" — not a Lottie animation." = "无法导入 \"\(name)\" — 不是 Lottie 动画。";
+"Can't move a multicam camera clip to another track — the group's program track stays fixed." = "无法将多机位摄像机片段移动到其他轨道 — 编组的节目轨道保持固定。";
+"Can't move part of multicam group \"\(name)\" — its clips stay in sync and move together." = "无法移动多机位编组 \"\(name)\" 的部分内容 — 其片段保持同步并一起移动。";
+"Can't relink — \"\(newURL.lastPathComponent)\" is \(newType.trackLabel.lowercased()), not \(asset.type.trackLabel.lowercased())." = "无法重新链接 — \"\(newURL.lastPathComponent)\" 是\(newType.trackLabel.lowercased())，而不是\(asset.type.trackLabel.lowercased())。";
+"Can't ripple through multicam group \"\(group.name)\" — split its clips at the edit point, or remove silence/words to cut time." = "无法波纹编辑多机位编组 \"\(group.name)\" — 在编辑点分割其片段，或移除静音/单词以缩短时间。";
+"Can't shift part of multicam group \"\(name)\" — \(stranded.joined(separator: ", ")) would stay behind and desync." = "无法移动多机位编组 \"\(name)\" 的部分内容 — \(stranded.joined(separator: ", ")) 将保留在原位并失去同步。";
+"Can't swap — pick \(clip.mediaType.trackLabel.lowercased()) media to replace this clip." = "无法替换 — 选择\(clip.mediaType.trackLabel.lowercased())媒体来替换此片段。";
+"Can't unlock sync on a multicam track — \"\(group.name)\" stays aligned through it." = "无法解锁多机位轨道的同步 — \"\(group.name)\" 通过它保持对齐。";
+"Nest settings discarded. Undo to restore." = "嵌套设置已丢弃。撤销以恢复。";
+"Sync-locked track \"\(label)\" doesn't have room to ripple." = "同步锁定的轨道 \"\(label)\" 没有空间进行波纹编辑。";
+
+/* ==================== Tour ==================== */
+
+"Next" = "下一步";
+"Skip" = "跳过";
+"Start creating" = "开始创作";
+"Step \(index) of \(tour.spotlightCount)" = "第 \(index) 步，共 \(tour.spotlightCount) 步";
+
+/* ==================== View Menu ==================== */
+
+"Default" = "默认";
+"Enter Full Screen" = "进入全屏";
+"Inspector" = "检查器";
+"Agent Panel" = "Agent 面板";
+"Layout" = "布局";
+"Maximize Focused Panel" = "最大化聚焦面板";
+"Media" = "媒体";
+"Media Panel" = "媒体面板";
+"Vertical" = "纵向";
+
+/* ==================== Welcome / Home ==================== */
+
+"Clear search" = "清除搜索";
+"Delete \(selectedProjectIDs.count)" = "删除 \(selectedProjectIDs.count) 个";
+"Delete Project" = "删除项目";
+"Delete Project?" = "删除项目？";
+"Delete Selected Projects?" = "删除所选项目？";
+"File missing" = "文件丢失";
+"Get started" = "开始使用";
+"My Projects" = "我的项目";
+"No projects found" = "未找到项目";
+"OK" = "确定";
+"Open" = "打开";
+"Opening Google…" = "正在打开 Google…";
+"Projects Couldn't Be Deleted" = "项目无法删除";
+"Remove from Recents" = "从最近项目中移除";
+"Retry" = "重试";
+"Reveal in Finder" = "在访达中显示";
+"Sample Project" = "示例项目";
+"Search projects" = "搜索项目";
+"Select" = "选择";
+"Sign In" = "登录";
+"Sign in with Google" = "使用 Google 登录";
+"The project will be moved to the Trash." = "该项目将被移至废纸篓。";
+"The selected projects will be moved to the Trash." = "所选项目将被移至废纸篓。";
+"Untitled" = "未命名";
+"Watch Tutorial" = "观看教程";
+"Welcome to Palmier Pro" = "欢迎使用 Palmier Pro";
+"A video editor built for AI. Generate, and edit all in one place." = "为 AI 而生的视频编辑器。一站式生成与编辑。";
+
+/* ==================== Agent panel — signed-out / no-credits state ==================== */
+
 "Log in for 250 free credits" = "登录即可获得250积分";
 "First-time sign-ups only" = "仅限首次注册";
 "or use your own Anthropic key" = "或使用你自己的 Anthropic 密钥";
-"Subscribe" = "订阅";
 "Open Settings" = "打开设置";

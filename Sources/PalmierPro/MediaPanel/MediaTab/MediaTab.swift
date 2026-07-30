@@ -817,7 +817,7 @@ struct MediaTab: View {
         let panel = NSOpenPanel()
         panel.allowsMultipleSelection = true
         panel.canChooseDirectories = true
-        panel.message = "Select media files or folders to import"
+        panel.message = loc("Select media files or folders to import")
         var types: [UTType] = [.movie, .image, .audio, .json]
         if let lottie = UTType(filenameExtension: "lottie") { types.append(lottie) }
         panel.allowedContentTypes = types

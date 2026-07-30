@@ -539,7 +539,7 @@ extension InspectorView {
         panel.canChooseFiles = true
         panel.canChooseDirectories = false
         panel.allowsMultipleSelection = false
-        panel.message = "Choose a .cube LUT file"
+        panel.message = loc("Choose a .cube LUT file")
         if let cube = UTType(filenameExtension: "cube") { panel.allowedContentTypes = [cube] }
         panel.begin { response in
             guard response == .OK, let url = panel.url else { return }

@@ -101,7 +101,7 @@ final class HelpWindowController: NSWindowController {
         let window = NSWindow(contentViewController: hosting)
         window.setContentSize(NSSize(width: 900, height: 560))
         window.minSize = NSSize(width: 820, height: 520)
-        window.title = "Help"
+        window.title = loc("Help")
         window.setFrameAutosaveName("PalmierProHelp-v1")
         window.appearance = NSAppearance(named: .darkAqua)
         window.backgroundColor = AppTheme.Background.base.withAlphaComponent(0.4)

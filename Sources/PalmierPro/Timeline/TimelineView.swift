@@ -1007,8 +1007,8 @@ final class TimelineView: NSView {
                 ] as [String: Any]
                 return item
             }
-            menu.addItem(mk("Linear", .linear))
-            menu.addItem(mk("Smooth", .smooth))
+            menu.addItem(mk(loc("Linear"), .linear))
+            menu.addItem(mk(loc("Smooth"), .smooth))
             return menu
         }
 
@@ -1024,11 +1024,11 @@ final class TimelineView: NSView {
                 item.representedObject = ["clipId": clip.id, "frame": kfFrame, "interp": interp.rawValue] as [String: Any]
                 return item
             }
-            menu.addItem(mk("Linear", .linear))
-            menu.addItem(mk("Smooth", .smooth))
-            menu.addItem(mk("Hold", .hold))
+            menu.addItem(mk(loc("Linear"), .linear))
+            menu.addItem(mk(loc("Smooth"), .smooth))
+            menu.addItem(mk(loc("Hold"), .hold))
             menu.addItem(.separator())
-            let del = NSMenuItem(title: "Delete Keyframe", action: #selector(performDeleteVolumeKf(_:)), keyEquivalent: "")
+            let del = NSMenuItem(title: loc("Delete Keyframe"), action: #selector(performDeleteVolumeKf(_:)), keyEquivalent: "")
             del.target = self
             del.representedObject = ["clipId": clip.id, "frame": kfFrame] as [String: Any]
             menu.addItem(del)
@@ -1038,7 +1038,7 @@ final class TimelineView: NSView {
         if clip.mediaType == .audio, editor.markDeadAir,
            editor.deadAirSpanRange(clip: clip, atTimelineFrame: clickFrame) != nil {
             let menu = NSMenu()
-            let remove = NSMenuItem(title: "Remove Dead Air", action: #selector(performRemoveDeadAir(_:)), keyEquivalent: "")
+            let remove = NSMenuItem(title: loc("Remove Dead Air"), action: #selector(performRemoveDeadAir(_:)), keyEquivalent: "")
             remove.target = self
             remove.representedObject = ["clipId": clip.id, "frame": clickFrame] as [String: Any]
             menu.addItem(remove)
@@ -1058,60 +1058,60 @@ final class TimelineView: NSView {
 
         // Timeline actions
         var timelineItems: [NSMenuItem] = []
-        let selectForwardTrackItem = NSMenuItem(title: "Select Forward on Track", action: #selector(performSelectForwardOnTrack(_:)), keyEquivalent: "")
+        let selectForwardTrackItem = NSMenuItem(title: loc("Select Forward on Track"), action: #selector(performSelectForwardOnTrack(_:)), keyEquivalent: "")
         selectForwardTrackItem.target = self
         selectForwardTrackItem.representedObject = clip.id
         timelineItems.append(selectForwardTrackItem)
 
-        let selectForwardAllItem = NSMenuItem(title: "Select Forward on All Tracks", action: #selector(performSelectForwardOnAllTracks(_:)), keyEquivalent: "")
+        let selectForwardAllItem = NSMenuItem(title: loc("Select Forward on All Tracks"), action: #selector(performSelectForwardOnAllTracks(_:)), keyEquivalent: "")
         selectForwardAllItem.target = self
         selectForwardAllItem.representedObject = clip.id
         timelineItems.append(selectForwardAllItem)
 
-        let copyItem = NSMenuItem(title: "Copy", action: #selector(performCopyClips(_:)), keyEquivalent: "")
+        let copyItem = NSMenuItem(title: loc("Copy"), action: #selector(performCopyClips(_:)), keyEquivalent: "")
         copyItem.target = self
         timelineItems.append(copyItem)
         if editor.canPasteClips {
-            let pasteItem = NSMenuItem(title: "Paste", action: #selector(performPasteClips(_:)), keyEquivalent: "")
+            let pasteItem = NSMenuItem(title: loc("Paste"), action: #selector(performPasteClips(_:)), keyEquivalent: "")
             pasteItem.target = self
             pasteItem.representedObject = ["trackIndex": hit.trackIndex, "frame": clickFrame] as [String: Any]
             timelineItems.append(pasteItem)
         }
         if editor.canLinkSelected {
-            let item = NSMenuItem(title: "Link", action: #selector(performLink(_:)), keyEquivalent: "")
+            let item = NSMenuItem(title: loc("Link"), action: #selector(performLink(_:)), keyEquivalent: "")
             item.target = self
             timelineItems.append(item)
         }
         if editor.canUnlinkSelected {
-            let item = NSMenuItem(title: "Unlink", action: #selector(performUnlink(_:)), keyEquivalent: "")
+            let item = NSMenuItem(title: loc("Unlink"), action: #selector(performUnlink(_:)), keyEquivalent: "")
             item.target = self
             timelineItems.append(item)
         }
 
         // AI
         var aiItems: [NSMenuItem] = []
-        let addToChatItem = NSMenuItem(title: "Add to Chat", action: #selector(performAddClipsToChat(_:)), keyEquivalent: "")
+        let addToChatItem = NSMenuItem(title: loc("Add to Chat"), action: #selector(performAddClipsToChat(_:)), keyEquivalent: "")
         addToChatItem.target = self
         addToChatItem.representedObject = targetClipIds
         aiItems.append(addToChatItem)
         if let aiEditSubmenu = aiEditSubmenu(for: clip.id) {
-            let aiEditItem = NSMenuItem(title: "AI Edit", action: nil, keyEquivalent: "")
+            let aiEditItem = NSMenuItem(title: loc("AI Edit"), action: nil, keyEquivalent: "")
             aiEditItem.submenu = aiEditSubmenu
             aiItems.append(aiEditItem)
         }
 
         // Nest
         var nestItems: [NSMenuItem] = []
-        let nestClipsItem = NSMenuItem(title: "Create Nested Timeline", action: #selector(performNestClips(_:)), keyEquivalent: "")
+        let nestClipsItem = NSMenuItem(title: loc("Create Nested Timeline"), action: #selector(performNestClips(_:)), keyEquivalent: "")
         nestClipsItem.target = self
         nestItems.append(nestClipsItem)
         if clip.sourceClipType == .sequence {
-            let openItem = NSMenuItem(title: "Open Timeline", action: #selector(performOpenNestedTimeline(_:)), keyEquivalent: "")
+            let openItem = NSMenuItem(title: loc("Open Timeline"), action: #selector(performOpenNestedTimeline(_:)), keyEquivalent: "")
             openItem.target = self
             openItem.representedObject = clip.mediaRef
             nestItems.append(openItem)
             if singleLinkGroup {
-                let decomposeItem = NSMenuItem(title: "Decompose Nested Timeline", action: #selector(performDecomposeNest(_:)), keyEquivalent: "")
+                let decomposeItem = NSMenuItem(title: loc("Decompose Nested Timeline"), action: #selector(performDecomposeNest(_:)), keyEquivalent: "")
                 decomposeItem.target = self
                 decomposeItem.representedObject = clip.id
                 nestItems.append(decomposeItem)
@@ -1121,13 +1121,13 @@ final class TimelineView: NSView {
         // Media
         var mediaItems: [NSMenuItem] = []
         if clip.mediaType != .text, clip.sourceClipType != .sequence, singleLinkGroup {
-            let swapItem = NSMenuItem(title: "Swap Media", action: #selector(performSwapMedia(_:)), keyEquivalent: "")
+            let swapItem = NSMenuItem(title: loc("Swap Media"), action: #selector(performSwapMedia(_:)), keyEquivalent: "")
             swapItem.target = self
             swapItem.representedObject = clip.id
             mediaItems.append(swapItem)
         }
         if clip.mediaType == .video || clip.mediaType == .audio {
-            let item = NSMenuItem(title: "Save as Media", action: #selector(performSaveAsMedia(_:)), keyEquivalent: "")
+            let item = NSMenuItem(title: loc("Save as Media"), action: #selector(performSaveAsMedia(_:)), keyEquivalent: "")
             item.target = self
             item.representedObject = clip.id
             mediaItems.append(item)
@@ -1135,9 +1135,9 @@ final class TimelineView: NSView {
         // Sync
         var syncItems: [NSMenuItem] = []
         if let pair = editor.syncSelection() {
-            let syncItem = NSMenuItem(title: "Synchronize", action: nil, keyEquivalent: "")
+            let syncItem = NSMenuItem(title: loc("Synchronize"), action: nil, keyEquivalent: "")
             let syncMenu = NSMenu()
-            for (title, mode) in [("Auto", EditorViewModel.SyncMode.auto), ("Audio", .audio), ("Timecode", .timecode)] {
+            for (title, mode) in [(loc("Auto"), EditorViewModel.SyncMode.auto), (loc("Audio"), .audio), (loc("Timecode"), .timecode)] {
                 let item = NSMenuItem(title: title, action: #selector(performSynchronize(_:)), keyEquivalent: "")
                 item.target = self
                 item.representedObject = ["referenceClipId": pair.referenceClipId, "targetClipIds": pair.targetClipIds, "mode": mode.rawValue] as [String: Any]
@@ -1150,12 +1150,12 @@ final class TimelineView: NSView {
            let asset = editor.mediaAssets.first(where: { $0.id == clip.mediaRef }),
            asset.type == .audio || (asset.type == .video && asset.hasAudio) {
             let hasBeats = editor.mediaVisualCache.beats.analysis(for: clip.mediaRef) != nil
-            let beatsItem = NSMenuItem(title: hasBeats ? "Redetect Beats" : "Detect Beats", action: #selector(performDetectBeats(_:)), keyEquivalent: "")
+            let beatsItem = NSMenuItem(title: loc(hasBeats ? "Redetect Beats" : "Detect Beats"), action: #selector(performDetectBeats(_:)), keyEquivalent: "")
             beatsItem.target = self
             beatsItem.representedObject = clip.mediaRef
             syncItems.append(beatsItem)
             if hasBeats {
-                let markItem = NSMenuItem(title: "Mark Beats", action: #selector(toggleMarkBeats(_:)), keyEquivalent: "")
+                let markItem = NSMenuItem(title: loc("Mark Beats"), action: #selector(toggleMarkBeats(_:)), keyEquivalent: "")
                 markItem.target = self
                 markItem.state = editor.markBeats ? .on : .off
                 syncItems.append(markItem)
@@ -1170,7 +1170,7 @@ final class TimelineView: NSView {
             if clip.mediaType != .audio, group.angles.count >= 2 {
                 multicamItems.append(layoutItem(clip: clip))
             }
-            let ungroupItem = NSMenuItem(title: "Ungroup Multicam", action: #selector(performUngroupMulticam(_:)), keyEquivalent: "")
+            let ungroupItem = NSMenuItem(title: loc("Ungroup Multicam"), action: #selector(performUngroupMulticam(_:)), keyEquivalent: "")
             ungroupItem.target = self
             ungroupItem.representedObject = group.id
             multicamItems.append(ungroupItem)
@@ -1192,7 +1192,7 @@ final class TimelineView: NSView {
         let menu = NSMenu()
         if editor.canPasteClips,
            editor.timeline.tracks.indices.contains(trackIndex) {
-            let item = NSMenuItem(title: "Paste", action: #selector(performPasteClips(_:)), keyEquivalent: "")
+            let item = NSMenuItem(title: loc("Paste"), action: #selector(performPasteClips(_:)), keyEquivalent: "")
             item.target = self
             item.representedObject = ["trackIndex": trackIndex, "frame": frame] as [String: Any]
             menu.addItem(item)
@@ -1203,7 +1203,7 @@ final class TimelineView: NSView {
 
             if gap.range.start > 0, editor.timeline.tracks[gap.trackIndex].type == .video {
                 let availability = editor.aiTransitionAvailability(for: gap)
-                let item = NSMenuItem(title: "Create AI Transition", action: #selector(performCreateAITransition(_:)), keyEquivalent: "")
+                let item = NSMenuItem(title: loc("Create AI Transition"), action: #selector(performCreateAITransition(_:)), keyEquivalent: "")
                 item.target = self
                 item.isEnabled = availability.model != nil
                 item.toolTip = availability.refusal
@@ -1212,7 +1212,7 @@ final class TimelineView: NSView {
             }
 
             let refusal = editor.rippleDeleteGapRefusal(gap)
-            let deleteItem = NSMenuItem(title: "Ripple Delete Gap", action: #selector(performRippleDeleteGap(_:)), keyEquivalent: "")
+            let deleteItem = NSMenuItem(title: loc("Ripple Delete Gap"), action: #selector(performRippleDeleteGap(_:)), keyEquivalent: "")
             deleteItem.target = self
             deleteItem.isEnabled = refusal == nil
             deleteItem.toolTip = refusal
@@ -1228,11 +1228,11 @@ final class TimelineView: NSView {
     }
 
     private func addTimelineRangeItems(to menu: NSMenu) {
-        let addItem = NSMenuItem(title: "Add Range to Chat", action: #selector(performAddTimelineRangeToChat(_:)), keyEquivalent: "")
+        let addItem = NSMenuItem(title: loc("Add Range to Chat"), action: #selector(performAddTimelineRangeToChat(_:)), keyEquivalent: "")
         addItem.target = self
         menu.addItem(addItem)
 
-        let saveItem = NSMenuItem(title: "Save Range as Media", action: #selector(performSaveTimelineRangeAsMedia(_:)), keyEquivalent: "")
+        let saveItem = NSMenuItem(title: loc("Save Range as Media"), action: #selector(performSaveTimelineRangeAsMedia(_:)), keyEquivalent: "")
         saveItem.target = self
         menu.addItem(saveItem)
 
@@ -1257,7 +1257,7 @@ final class TimelineView: NSView {
             item.representedObject = ["clipId": clip.id, "angle": member.angleLabel] as [String: Any]
             submenu.addItem(item)
         }
-        let parent = NSMenuItem(title: audio ? "Switch Mic" : "Switch Angle", action: nil, keyEquivalent: "")
+        let parent = NSMenuItem(title: loc(audio ? "Switch Mic" : "Switch Angle"), action: nil, keyEquivalent: "")
         parent.submenu = submenu
         return parent
     }
@@ -1271,7 +1271,7 @@ final class TimelineView: NSView {
             submenu.addItem(item)
             if layout == .full { submenu.addItem(.separator()) }
         }
-        let parent = NSMenuItem(title: "Layout", action: nil, keyEquivalent: "")
+        let parent = NSMenuItem(title: loc("Layout"), action: nil, keyEquivalent: "")
         parent.submenu = submenu
         return parent
     }
@@ -1295,13 +1295,13 @@ final class TimelineView: NSView {
                                       "start": range.startFrame, "end": range.endFrame] as [String: Any]
             submenu.addItem(item)
         }
-        let parent = NSMenuItem(title: "Switch Angle in Range", action: nil, keyEquivalent: "")
+        let parent = NSMenuItem(title: loc("Switch Angle in Range"), action: nil, keyEquivalent: "")
         parent.submenu = submenu
         return parent
     }
 
     private func addClearRangeItem(to menu: NSMenu) {
-        let item = NSMenuItem(title: "Clear Range", action: #selector(performClearTimelineRange(_:)), keyEquivalent: "")
+        let item = NSMenuItem(title: loc("Clear Range"), action: #selector(performClearTimelineRange(_:)), keyEquivalent: "")
         item.target = self
         menu.addItem(item)
     }

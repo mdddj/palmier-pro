@@ -378,7 +378,7 @@ struct PreviewContainerView: View {
         panel.canChooseFiles = true
         panel.canChooseDirectories = false
         panel.allowsMultipleSelection = false
-        panel.message = "Choose the source file for this clip"
+        panel.message = loc("Choose the source file for this clip")
         panel.begin { response in
             guard response == .OK, let url = panel.url else { return }
             editor.relinkAsset(id: assetId, to: url)
@@ -390,7 +390,7 @@ struct PreviewContainerView: View {
         panel.canChooseFiles = false
         panel.canChooseDirectories = true
         panel.allowsMultipleSelection = false
-        panel.message = "Choose the folder that holds your media"
+        panel.message = loc("Choose the folder that holds your media")
         panel.begin { response in
             guard response == .OK, let url = panel.url else { return }
             let result = editor.relinkOfflineAssets(fromFolder: url)
