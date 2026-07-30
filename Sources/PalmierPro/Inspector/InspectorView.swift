@@ -387,19 +387,19 @@ struct InspectorView: View {
 
     private func tabBar(_ tabs: [ClipTab], selectedTab: ClipTab?) -> some View {
         TitleTabBar(
-            titles: tabs.map(\.rawValue),
-            selected: selectedTab?.rawValue
+            titles: tabs.map { loc($0.rawValue) },
+            selected: selectedTab.map { loc($0.rawValue) }
         ) { title in
-            if let tab = tabs.first(where: { $0.rawValue == title }) { preferredTab = tab }
+            if let tab = tabs.first(where: { loc($0.rawValue) == title }) { preferredTab = tab }
         }
     }
 
     private func assetTabBar(_ tabs: [AssetTab]) -> some View {
         TitleTabBar(
-            titles: tabs.map(\.rawValue),
-            selected: preferredAssetTab.rawValue
+            titles: tabs.map { loc($0.rawValue) },
+            selected: loc(preferredAssetTab.rawValue)
         ) { title in
-            if let tab = tabs.first(where: { $0.rawValue == title }) { preferredAssetTab = tab }
+            if let tab = tabs.first(where: { loc($0.rawValue) == title }) { preferredAssetTab = tab }
         }
     }
 

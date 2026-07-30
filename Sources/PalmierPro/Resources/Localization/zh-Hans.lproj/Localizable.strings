@@ -597,3 +597,173 @@
 "First-time sign-ups only" = "仅限首次注册";
 "or use your own Anthropic key" = "或使用你自己的 Anthropic 密钥";
 "Open Settings" = "打开设置";
+
+/* ==================== Inspector Tabs ==================== */
+
+"Adjust" = "调整";
+"Animate" = "动画";
+"Content" = "内容";
+"Details" = "详情";
+
+/* ==================== Font Case ==================== */
+
+"UPPERCASE" = "大写";
+"lowercase" = "小写";
+
+/* ==================== Text Fill ==================== */
+
+"Color" = "颜色";
+"Footage" = "视频内容";
+
+/* ==================== Text Animation ==================== */
+
+"Off" = "关闭";
+"Fade In" = "淡入";
+"Pop In" = "弹入";
+"Slide Up" = "上滑";
+"Typewriter" = "打字机";
+"Word Reveal" = "逐词显现";
+"Word Slide" = "逐词滑动";
+"Word Pop" = "逐词弹出";
+"Word Cycle" = "逐词轮换";
+"Highlight" = "高亮";
+"Highlight Block" = "高亮块";
+
+/* ==================== Blend Modes ==================== */
+
+"Normal" = "正常";
+"Darken" = "变暗";
+"Multiply" = "正片叠底";
+"Color Burn" = "颜色加深";
+"Lighten" = "变亮";
+"Screen" = "滤色";
+"Color Dodge" = "颜色减淡";
+"Overlay" = "叠加";
+"Soft Light" = "柔光";
+"Hard Light" = "强光";
+"Difference" = "差值";
+"Exclusion" = "排除";
+"Hue" = "色相";
+"Saturation" = "饱和度";
+"Luminosity" = "明度";
+
+/* ==================== Crop Aspect ==================== */
+
+"Custom" = "自定义";
+"Original" = "原始";
+"16:9" = "16:9";
+"9:16" = "9:16";
+"1:1" = "1:1";
+"4:3" = "4:3";
+"3:4" = "3:4";
+"21:9" = "21:9";
+
+/* ==================== Aspect Presets ==================== */
+
+"2.4:1" = "2.4:1";
+
+/* ==================== Quality ==================== */
+
+"2K" = "2K";
+"4K" = "4K";
+"720p" = "720p";
+"1080p" = "1080p";
+"Match Timeline" = "匹配时间线";
+
+/* ==================== Codecs ==================== */
+
+"H.264" = "H.264";
+"H.265" = "H.265";
+"ProRes" = "ProRes";
+"HEVC 10-bit HDR" = "HEVC 10-bit HDR";
+"MPEG-4 (.mp4)" = "MPEG-4 (.mp4)";
+"QuickTime (.mov)" = "QuickTime (.mov)";
+
+/* ==================== FCPXML Target ==================== */
+
+"DaVinci Resolve" = "DaVinci Resolve";
+"Final Cut Pro" = "Final Cut Pro";
+
+/* ==================== Generation Types ==================== */
+
+"Upscale" = "放大";
+
+/* ==================== Generation UI ==================== */
+
+"First/Last" = "首/尾帧";
+
+/* ==================== Transcription ==================== */
+
+"Cloud" = "云端";
+
+/* ==================== Audio Model Categories ==================== */
+
+"General" = "通用";
+"Speech" = "语音";
+"Sound Effects" = "音效";
+"Voice Cleanup" = "人声清理";
+"Dubbing" = "配音";
+
+/* ==================== Curve Editor Channels ==================== */
+
+"Y" = "Y";
+"R" = "R";
+"G" = "G";
+"B" = "B";
+"Hue" = "色相";
+"Sat" = "饱和度";
+"Luma" = "亮度";
+
+/* ==================== Multicam ==================== */
+
+"Angle" = "角度";
+"Mic" = "麦克风";
+"Both" = "两者";
+
+/* ==================== Effect Names ==================== */
+
+"Exposure" = "曝光";
+"Contrast" = "对比度";
+"Temperature & Tint" = "色温与色调";
+"Highlights & Shadows" = "高光与阴影";
+"Vibrance" = "自然饱和度";
+"Gaussian Blur" = "高斯模糊";
+"Sharpen" = "锐化";
+"Noise Reduction" = "降噪";
+"Invert" = "反相";
+"Temperature" = "色温";
+"Tint" = "色调";
+"Highlights" = "高光";
+"Shadows" = "阴影";
+"Blacks" = "黑色";
+"Whites" = "白色";
+"Lift" = "提升";
+"Gamma" = "伽马";
+"Gain" = "增益";
+"Intensity" = "强度";
+"Radius" = "半径";
+"Sharpness" = "锐度";
+"Amount" = "数量";
+"Size" = "大小";
+"Midpoint" = "中点";
+"Roundness" = "圆度";
+"Feather" = "羽化";
+"Threshold" = "阈值";
+"Warmth" = "暖度";
+"Clarity" = "清晰度";
+"Dehaze" = "去雾";
+"Key Hue" = "键控色相";
+"Tolerance" = "容差";
+"Softness" = "柔和度";
+"Spill" = "溢出抑制";
+"Motion Blur" = "运动模糊";
+
+/* ==================== Prompt Placeholders ==================== */
+
+"Describe the image" = "描述图像";
+"Describe the video" = "描述视频";
+"Describe the audio scene (min N chars)" = "描述音频场景（最少 N 字）";
+"Text to speak (min N chars)" = "要朗读的文本（最少 N 字）";
+"Describe the music style or mood (min N chars)" = "描述音乐风格或情绪（最少 N 字）";
+"Describe the sound (min N chars)" = "描述声音（最少 N 字）";
+"No prompt needed" = "无需提示词";

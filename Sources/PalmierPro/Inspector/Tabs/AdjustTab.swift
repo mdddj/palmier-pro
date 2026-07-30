@@ -579,7 +579,7 @@ extension InspectorView {
     private func adjustmentRow(_ control: EffectControl, clips: [Clip]) -> some View {
         if let descriptor = EffectRegistry.descriptor(id: control.effectId),
            let spec = descriptor.params.first(where: { $0.key == control.paramKey }) {
-            let label = control.label ?? spec.label
+            let label = control.label ?? spec.localizedLabel
             HStack(spacing: AppTheme.Spacing.sm) {
                 adjustRowLabel(label, inset: adjustSubgroupChildLabelInset)
                 AdjustSlider(

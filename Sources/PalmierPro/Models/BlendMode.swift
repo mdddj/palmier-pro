@@ -8,22 +8,22 @@ enum BlendMode: String, Codable, Sendable, CaseIterable {
 
     var displayName: String {
         switch self {
-        case .normal: "Normal"
-        case .darken: "Darken"
-        case .multiply: "Multiply"
-        case .colorBurn: "Color Burn"
-        case .lighten: "Lighten"
-        case .screen: "Screen"
-        case .colorDodge: "Color Dodge"
-        case .overlay: "Overlay"
-        case .softLight: "Soft Light"
-        case .hardLight: "Hard Light"
-        case .difference: "Difference"
-        case .exclusion: "Exclusion"
-        case .hue: "Hue"
-        case .saturation: "Saturation"
-        case .color: "Color"
-        case .luminosity: "Luminosity"
+        case .normal: loc("Normal")
+        case .darken: loc("Darken")
+        case .multiply: loc("Multiply")
+        case .colorBurn: loc("Color Burn")
+        case .lighten: loc("Lighten")
+        case .screen: loc("Screen")
+        case .colorDodge: loc("Color Dodge")
+        case .overlay: loc("Overlay")
+        case .softLight: loc("Soft Light")
+        case .hardLight: loc("Hard Light")
+        case .difference: loc("Difference")
+        case .exclusion: loc("Exclusion")
+        case .hue: loc("Hue")
+        case .saturation: loc("Saturation")
+        case .color: loc("Color")
+        case .luminosity: loc("Luminosity")
         }
     }
 

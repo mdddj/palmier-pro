@@ -61,12 +61,12 @@ enum AspectPreset: CaseIterable {
 
     var label: String {
         switch self {
-        case .sixteenNine: "16:9"
-        case .nineByFourteen: "9:14"
-        case .nineSixteen: "9:16"
-        case .oneOne: "1:1"
-        case .fourThree: "4:3"
-        case .twoPointFourOne: "2.4:1"
+        case .sixteenNine: loc("16:9")
+        case .nineByFourteen: loc("9:14")
+        case .nineSixteen: loc("9:16")
+        case .oneOne: loc("1:1")
+        case .fourThree: loc("4:3")
+        case .twoPointFourOne: loc("2.4:1")
         }
     }
 
@@ -102,10 +102,10 @@ enum QualityPreset: CaseIterable {
 
     var label: String {
         switch self {
-        case .hd720: "720p"
-        case .fullHD: "1080p"
-        case .twoK: "2K"
-        case .fourK: "4K"
+        case .hd720: loc("720p")
+        case .fullHD: loc("1080p")
+        case .twoK: loc("2K")
+        case .fourK: loc("4K")
         }
     }
 

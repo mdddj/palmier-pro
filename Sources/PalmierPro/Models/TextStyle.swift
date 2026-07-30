@@ -37,9 +37,9 @@ struct TextStyle: Codable, Sendable, Equatable, Hashable {
 
         var label: String {
             switch self {
-            case .mixed: "Mixed"
-            case .uppercase: "UPPERCASE"
-            case .lowercase: "lowercase"
+            case .mixed: loc("Mixed")
+            case .uppercase: loc("UPPERCASE")
+            case .lowercase: loc("lowercase")
             }
         }
 

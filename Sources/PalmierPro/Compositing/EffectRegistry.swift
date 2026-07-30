@@ -7,6 +7,8 @@ struct EffectParamSpec: Sendable {
     let range: ClosedRange<Double>
     let defaultValue: Double
     let unit: String
+
+    var localizedLabel: String { loc(label) }
 }
 
 /// Numeric/string param values resolved for one frame
@@ -25,9 +27,10 @@ struct EffectDescriptor: Identifiable, Sendable {
     let category: String
     let params: [EffectParamSpec]
     let linearizes: Bool
-    /// True for effects carrying a file resource (LUT) — drives the inspector row.
     let resourceKey: String?
     let apply: @Sendable (CIImage, ResolvedEffectParams, CGRect) -> CIImage
+
+    var localizedName: String { loc(displayName) }
 
     init(id: String, displayName: String, category: String,
          params: [EffectParamSpec], linearizes: Bool = false, resourceKey: String? = nil,

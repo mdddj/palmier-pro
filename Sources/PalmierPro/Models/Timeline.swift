@@ -637,14 +637,14 @@ enum CropAspectLock: Hashable, CaseIterable {
 
     var label: String {
         switch self {
-        case .free: "Custom"
-        case .original: "Original"
-        case .r16x9: "16:9"
-        case .r9x16: "9:16"
-        case .r1x1: "1:1"
-        case .r4x3: "4:3"
-        case .r3x4: "3:4"
-        case .r21x9: "21:9"
+        case .free: loc("Custom")
+        case .original: loc("Original")
+        case .r16x9: loc("16:9")
+        case .r9x16: loc("9:16")
+        case .r1x1: loc("1:1")
+        case .r4x3: loc("4:3")
+        case .r3x4: loc("3:4")
+        case .r21x9: loc("21:9")
         }
     }
 

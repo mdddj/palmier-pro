@@ -34,18 +34,18 @@ enum VideoLayout: String, CaseIterable, Sendable {
 
     var displayName: String {
         switch self {
-        case .full: "Full Frame"
-        case .sideBySide: "Side by Side"
-        case .topBottom: "Top / Bottom"
-        case .pipBottomRight: "PiP Bottom Right"
-        case .pipBottomLeft: "PiP Bottom Left"
-        case .pipTopRight: "PiP Top Right"
-        case .pipTopLeft: "PiP Top Left"
-        case .grid2x2: "Grid 2×2"
-        case .grid3x3: "Grid 3×3"
-        case .grid4x4: "Grid 4×4"
-        case .mainSidebar: "Main + Sidebar"
-        case .threeUp: "Three-Up"
+        case .full: loc("Full Frame")
+        case .sideBySide: loc("Side by Side")
+        case .topBottom: loc("Top / Bottom")
+        case .pipBottomRight: loc("PiP Bottom Right")
+        case .pipBottomLeft: loc("PiP Bottom Left")
+        case .pipTopRight: loc("PiP Top Right")
+        case .pipTopLeft: loc("PiP Top Left")
+        case .grid2x2: loc("Grid 2×2")
+        case .grid3x3: loc("Grid 3×3")
+        case .grid4x4: loc("Grid 4×4")
+        case .mainSidebar: loc("Main + Sidebar")
+        case .threeUp: loc("Three-Up")
         }
     }
 
