@@ -150,15 +150,15 @@ enum MainMenuBuilder {
         let item = NSMenuItem(title: loc("Layout"), action: nil, keyEquivalent: "")
         let submenu = NSMenu(title: loc("Layout"))
 
-        let defaultItem = NSMenuItem(title: loc(LayoutPreset.default.label), action: #selector(EditorActions.setLayoutDefault(_:)), keyEquivalent: "1")
+        let defaultItem = NSMenuItem(title: loc(LayoutPreset.default.label), action: #selector(EditorActions.setLayoutDefault(_:)), keyEquivalent: String(LayoutPreset.default.shortcutKey))
         defaultItem.keyEquivalentModifierMask = [.command]
         submenu.addItem(defaultItem)
 
-        let mediaItem = NSMenuItem(title: loc(LayoutPreset.media.label), action: #selector(EditorActions.setLayoutMedia(_:)), keyEquivalent: "2")
+        let mediaItem = NSMenuItem(title: loc(LayoutPreset.media.label), action: #selector(EditorActions.setLayoutMedia(_:)), keyEquivalent: String(LayoutPreset.media.shortcutKey))
         mediaItem.keyEquivalentModifierMask = [.command]
         submenu.addItem(mediaItem)
 
-        let verticalItem = NSMenuItem(title: loc(LayoutPreset.vertical.label), action: #selector(EditorActions.setLayoutVertical(_:)), keyEquivalent: "3")
+        let verticalItem = NSMenuItem(title: loc(LayoutPreset.vertical.label), action: #selector(EditorActions.setLayoutVertical(_:)), keyEquivalent: String(LayoutPreset.vertical.shortcutKey))
         verticalItem.keyEquivalentModifierMask = [.command]
         submenu.addItem(verticalItem)
 

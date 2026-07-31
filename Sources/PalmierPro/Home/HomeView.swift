@@ -11,7 +11,7 @@ struct HomeView: View {
 
             content
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .background(Color.black.opacity(AppTheme.Opacity.medium))
+                .background(AppTheme.Background.baseColor.opacity(AppTheme.Opacity.medium))
         }
         .frame(
             minWidth: AppTheme.Window.homeMin.width,
