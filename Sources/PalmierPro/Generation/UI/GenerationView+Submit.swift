@@ -97,15 +97,15 @@ extension GenerationView {
 
     private var costHelpText: String {
         guard let cost = estimatedCost else {
-            return "Estimated cost. Actual billing may differ slightly."
+            return loc("Estimated cost. Actual billing may differ slightly.")
         }
         guard let left = remainingCredits else {
-            return "\(cost) credits estimated. Actual billing may differ."
+            return loc(format: "%lld credits estimated. Actual billing may differ.", Int64(cost))
         }
         if cost > left {
-            return "\(cost) credits needed. Only \(left.formatted()) remaining."
+            return loc(format: "%lld credits needed. Only %@ remaining.", Int64(cost), left.formatted())
         }
-        return "\(cost) credits. \((left - cost).formatted()) credits remaining after this generation."
+        return loc(format: "%lld credits. %@ credits remaining after this generation.", Int64(cost), (left - cost).formatted())
     }
 
     var costEstimateLabel: some View {
@@ -202,24 +202,24 @@ extension GenerationView {
         case .audio:
             let inputAssets = audioInputAssets(for: audioModel)
             if audioUsesSource {
-                guard audioSource != nil else { return "Add source media." }
+                guard audioSource != nil else { return loc("Add source media.") }
                 return audioModel.validate(spanSeconds: effectiveAudioSourceSpanSeconds)
                     ?? audioModel.validate(params: audioParams(audioDuration: audioDuration))
             }
             return audioModel.validate(params: audioParams(audioDuration: audioDuration))
                 ?? inputAssets.validate(for: audioModel)
         case .upscale:
-            guard let source = upscaleSource else { return "Add source media." }
+            guard let source = upscaleSource else { return loc("Add source media.") }
             guard upscaleModel.supportedTypes.contains(source.type) else {
-                return "\(upscaleModel.displayName) does not support this media type."
+                return loc(format: "%@ does not support this media type.", upscaleModel.displayName)
             }
             guard source.sourceWidth != nil, source.sourceHeight != nil else {
-                return "Loading source dimensions…"
+                return loc("Loading source dimensions…")
             }
             if source.type == .video {
-                guard source.sourceFPS != nil else { return "Loading source frame rate…" }
+                guard source.sourceFPS != nil else { return loc("Loading source frame rate…") }
                 guard upscaleModel.supports(source: source) else {
-                    return "This model cannot cap the output at 60 FPS."
+                    return loc("This model cannot cap the output at 60 FPS.")
                 }
             }
             return nil

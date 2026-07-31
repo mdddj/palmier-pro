@@ -26,17 +26,17 @@ struct GenerationReferencesStrip: View {
         let primary = primaryLabels(for: gen)
         let videoBase = videoReferenceBaseLabel(for: gen)
         let groups: [(ids: [String]?, base: String, primary: [String])] = [
-            (gen.imageURLAssetIds,       "Reference", primary),
-            (gen.referenceImageAssetIds, "Image Ref", []),
+            (gen.imageURLAssetIds,       loc("Reference"), primary),
+            (gen.referenceImageAssetIds, loc("Image Ref"), []),
             (gen.referenceVideoAssetIds, videoBase, []),
-            (gen.referenceAudioAssetIds, "Audio Ref", []),
+            (gen.referenceAudioAssetIds, loc("Audio Ref"), []),
         ]
         return groups.flatMap { ids, base, primary -> [(String, MediaAsset)] in
             let ids = ids ?? []
             return ids.enumerated().compactMap { i, id in
                 guard let asset = byId[id] else { return nil }
                 if i < primary.count { return (primary[i], asset) }
-                return (ids.count > 1 ? "\(base) \(i + 1)" : base, asset)
+                return (ids.count > 1 ? loc(format: "%@ %lld", base, Int64(i + 1)) : base, asset)
             }
         }
     }
@@ -44,19 +44,19 @@ struct GenerationReferencesStrip: View {
     private static func videoReferenceBaseLabel(for gen: GenerationInput) -> String {
         if case .audio(let model) = ModelRegistry.byId[gen.model],
            model.inputs.contains(.video) {
-            return "Source Video"
+            return loc("Source Video")
         }
-        return "Video Ref"
+        return loc("Video Ref")
     }
 
     private static func primaryLabels(for gen: GenerationInput) -> [String] {
         switch ModelRegistry.byId[gen.model] {
         case .video(let m):
-            if m.requiresSourceVideo { return m.supportsReferences ? ["Source", "Reference"] : ["Source"] }
-            if m.supportsFirstFrame  { return m.supportsLastFrame  ? ["First Frame", "Last Frame"] : ["First Frame"] }
+            if m.requiresSourceVideo { return m.supportsReferences ? [loc("Source"), loc("Reference")] : [loc("Source")] }
+            if m.supportsFirstFrame  { return m.supportsLastFrame  ? [loc("First Frame"), loc("Last Frame")] : [loc("First Frame")] }
             return []
         case .upscale:
-            return ["Source"]
+            return [loc("Source")]
         default:
             return []
         }

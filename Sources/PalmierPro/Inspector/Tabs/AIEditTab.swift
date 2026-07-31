@@ -426,8 +426,8 @@ struct AIEditTab: View {
     private var shouldReplace: Bool { replaceClipSource && clipId != nil }
 
     private var aiDisabledReason: String? {
-        if account.isMisconfigured { return "AI is unavailable" }
-        if !account.isSignedIn { return "Sign in to use AI" }
+        if account.isMisconfigured { return loc("AI is unavailable") }
+        if !account.isSignedIn { return loc("Sign in to use AI") }
         return nil
     }
 

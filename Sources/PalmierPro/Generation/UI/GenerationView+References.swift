@@ -392,8 +392,8 @@ extension GenerationView {
     }
 
     private var audioSourceLabel: String {
-        if audioSourceTypes == [.audio] { return "Source Audio" }
-        if audioSourceTypes == [.video] { return "Source Video" }
-        return "Source Media"
+        if audioSourceTypes == [.audio] { return loc("Source Audio") }
+        if audioSourceTypes == [.video] { return loc("Source Video") }
+        return loc("Source Media")
     }
 }

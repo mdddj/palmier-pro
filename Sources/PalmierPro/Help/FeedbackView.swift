@@ -86,7 +86,7 @@ struct FeedbackView: View {
 
     private var descriptionField: some View {
         VStack(alignment: .leading, spacing: AppTheme.Spacing.xs) {
-            fieldLabel("Describe the issue or feedback")
+            fieldLabel(loc("Describe the issue or feedback"))
             TextEditor(text: $message)
                 .font(.system(size: AppTheme.FontSize.md))
                 .foregroundStyle(AppTheme.Text.primaryColor)
@@ -107,7 +107,7 @@ struct FeedbackView: View {
 
     private var emailField: some View {
         VStack(alignment: .leading, spacing: AppTheme.Spacing.xs) {
-            fieldLabel("Email (optional)")
+            fieldLabel(loc("Email (optional)"))
             TextField("", text: $email, prompt: Text("you@example.com — so we can reply"))
                 .textFieldStyle(.plain)
                 .font(.system(size: AppTheme.FontSize.md))
@@ -237,12 +237,12 @@ struct FeedbackView: View {
         let replyAddr = account.account?.user.email
             ?? (trimmedEmail.isEmpty ? nil : trimmedEmail)
         if let replyAddr, mayContact {
-            return "We read every message and may reach out at \(replyAddr)."
+            return loc(format: "We read every message and may reach out at %@.", replyAddr)
         }
         if replyAddr != nil {
-            return "We read every message. We won't email you, as requested."
+            return loc("We read every message. We won't email you, as requested.")
         }
-        return "We read every message. Add an email next time if you'd like a reply."
+        return loc("We read every message. Add an email next time if you'd like a reply.")
     }
 
     // MARK: - Helpers

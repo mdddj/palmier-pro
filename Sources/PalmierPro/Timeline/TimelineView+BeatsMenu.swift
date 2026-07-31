@@ -15,15 +15,15 @@ extension TimelineView {
             guard let self else { return }
             if let analysis = try? await task.value {
                 if analysis.beats.isEmpty && analysis.downbeats.isEmpty {
-                    editor.mediaPanelToast = MediaPanelToast(message: "No beats detected.", kind: .warning)
+                    editor.mediaPanelToast = MediaPanelToast(message: loc("No beats detected."), kind: .warning)
                 } else {
                     let count = max(analysis.beats.count, analysis.downbeats.count)
                     let bpm = analysis.bpm > 0 ? "\(Int(analysis.bpm.rounded())) BPM, " : ""
-                    editor.mediaPanelToast = MediaPanelToast(message: "Detected \(bpm)\(count) beats.", kind: .success)
+                    editor.mediaPanelToast = MediaPanelToast(message: loc(format: "Detected %@%lld beats.", bpm, Int64(count)), kind: .success)
                 }
             } else {
                 editor.mediaPanelToast = MediaPanelToast(
-                    message: "Beat detection failed. Check that the media file is reachable, then retry.",
+                    message: loc("Beat detection failed. Check that the media file is reachable, then retry."),
                     kind: .warning
                 )
             }

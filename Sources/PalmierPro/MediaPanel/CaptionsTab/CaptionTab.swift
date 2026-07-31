@@ -45,8 +45,8 @@ struct CaptionTab: View {
         return selectedClipTargets   // Auto resolves its source during generation
     }
     private var automaticSourceSummary: String {
-        if !selectedClipTargets.isEmpty { return "Selected Clips · \(selectedClipTargets.count)" }
-        return editor.captionTargets(ids: []).isEmpty ? "No audio" : "Auto"
+        if !selectedClipTargets.isEmpty { return loc(format: "Selected Clips · %lld", Int64(selectedClipTargets.count)) }
+        return editor.captionTargets(ids: []).isEmpty ? loc("No audio") : loc("Auto")
     }
     private var effectiveCount: Int {
         isAutoSource ? editor.captionTargets(ids: []).count : sourceClipIds.count
@@ -59,7 +59,7 @@ struct CaptionTab: View {
     }
     private var cloudModeUnavailableMessage: String? {
         guard provider == .cloud else { return nil }
-        guard account.isSignedIn else { return "Sign in to use Cloud." }
+        guard account.isSignedIn else { return loc("Sign in to use Cloud.") }
         return nil
     }
     private var canGenerateCaptions: Bool {
@@ -69,11 +69,11 @@ struct CaptionTab: View {
         "\(provider.rawValue)|\(sourceClipIds.joined(separator: ","))|\(isAutoSource)|\(locale?.identifier ?? "")"
     }
     private var costHelpText: String {
-        guard let cost = estimatedCloudCost else { return "Estimated cost. Actual billing may differ slightly." }
-        guard cost > 0 else { return "Cached — no credits used." }
-        guard let remaining = remainingCloudCredits else { return "\(CostEstimator.format(cost)) estimated. Actual billing may differ." }
-        if cost > remaining { return "\(CostEstimator.format(cost)) needed. Only \(remaining.formatted()) remaining." }
-        return "\(CostEstimator.format(cost)). \((remaining - cost).formatted()) remaining after this generation."
+        guard let cost = estimatedCloudCost else { return loc("Estimated cost. Actual billing may differ slightly.") }
+        guard cost > 0 else { return loc("Cached — no credits used.") }
+        guard let remaining = remainingCloudCredits else { return loc(format: "%@ estimated. Actual billing may differ.", CostEstimator.format(cost)) }
+        if cost > remaining { return loc(format: "%@ needed. Only %@ remaining.", CostEstimator.format(cost), remaining.formatted()) }
+        return loc(format: "%@. %@ remaining after this generation.", CostEstimator.format(cost), (remaining - cost).formatted())
     }
 
     private static let translateLanguages = [
@@ -83,7 +83,7 @@ struct CaptionTab: View {
 
     private var sourceSummary: String {
         guard let selectedTrackId else { return automaticSourceSummary }
-        guard let index = editor.timeline.tracks.firstIndex(where: { $0.id == selectedTrackId }) else { return "No track" }
+        guard let index = editor.timeline.tracks.firstIndex(where: { $0.id == selectedTrackId }) else { return loc("No track") }
         return "\(trackTitle(index)) · \(sourceClipIds.count)"
     }
 
@@ -422,7 +422,7 @@ struct CaptionTab: View {
             HStack(spacing: AppTheme.Spacing.sm) {
                 Button(action: generate) {
                     HStack(spacing: AppTheme.Spacing.xs) {
-                        Text(cloudModeUnavailableMessage ?? "Generate Captions")
+                        Text(cloudModeUnavailableMessage ?? loc("Generate Captions"))
                         if cloudModeUnavailableMessage == nil, provider == .cloud, let cost = estimatedCloudCost {
                             Image(systemName: "dollarsign.circle.fill").font(.system(size: AppTheme.FontSize.xs))
                             Text("\(cost)").monospacedDigit()
@@ -445,7 +445,7 @@ struct CaptionTab: View {
         note = nil
         let sourceIds = sourceClipIds
         if selectedTrackId != nil && sourceIds.isEmpty {
-            note = "No audio selected."
+            note = loc("No audio selected.")
             return
         }
         let request = EditorViewModel.CaptionRequest(
@@ -474,7 +474,7 @@ struct CaptionTab: View {
                         return
                     }
                 }
-                if try await editor.generateCaptions(for: request).isEmpty { note = "No speech detected." }
+                if try await editor.generateCaptions(for: request).isEmpty { note = loc("No speech detected.") }
             } catch {
                 note = error.localizedDescription
             }
@@ -483,13 +483,13 @@ struct CaptionTab: View {
 
     private func cloudUnavailableMessage(cost: Int?, provider mode: TranscriptionProvider? = nil) -> String? {
         guard (mode ?? provider) == .cloud else { return nil }
-        guard account.isSignedIn else { return "Sign in to use Cloud." }
+        guard account.isSignedIn else { return loc("Sign in to use Cloud.") }
         guard let cost else { return nil }
         guard cost > 0 else { return nil }
         guard let remaining = remainingCloudCredits else { return nil }
-        guard remaining > 0 else { return "Add credits to use Cloud." }
+        guard remaining > 0 else { return loc("Add credits to use Cloud.") }
         if cost > remaining {
-            return "\(CostEstimator.format(cost)) needed. Only \(remaining.formatted()) remaining."
+            return loc(format: "%@ needed. Only %@ remaining.", CostEstimator.format(cost), remaining.formatted())
         }
         return nil
     }
