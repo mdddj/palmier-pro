@@ -134,10 +134,15 @@ cp -R "$SPARKLE_FW" "$APP/Contents/Frameworks/Sparkle.framework"
 
 # Flatten SwiftPM's resource bundle into the app's Resources tree.
 RES_BUNDLE="$(dirname "$BIN")/PalmierPro_PalmierPro.bundle"
-if [ -d "$RES_BUNDLE/Fonts" ]; then
-  cp -R "$RES_BUNDLE/Fonts" "$APP/Contents/Resources/"
+# Current SwiftPM emits the macOS bundle layout; older toolchains placed resources at the bundle root.
+RES_ROOT="$RES_BUNDLE"
+if [ -d "$RES_BUNDLE/Contents/Resources" ]; then
+  RES_ROOT="$RES_BUNDLE/Contents/Resources"
+fi
+if [ -d "$RES_ROOT/Fonts" ]; then
+  cp -R "$RES_ROOT/Fonts" "$APP/Contents/Resources/"
 else
-  echo "!! missing Fonts/ in SwiftPM resource bundle at $RES_BUNDLE" >&2
+  echo "!! missing Fonts/ in SwiftPM resource bundle at $RES_ROOT" >&2
   exit 1
 fi
 
@@ -153,12 +158,12 @@ if ! unzip -p "$MCPB_CHECKED_IN" server/index.js 2>/dev/null | diff -q - <(unzip
 fi
 cp "$MCPB_FRESH" "$APP/Contents/Resources/palmier-pro.mcpb"
 rm -rf "$(dirname "$MCPB_FRESH")"
-if [ -d "$RES_BUNDLE/Images" ]; then
-  cp -R "$RES_BUNDLE/Images" "$APP/Contents/Resources/"
+if [ -d "$RES_ROOT/Images" ]; then
+  cp -R "$RES_ROOT/Images" "$APP/Contents/Resources/"
 fi
 # .lproj folders must live at the bundle root for macOS to resolve them.
 LOCALIZATION_COUNT=0
-for locale_dir in "$RES_BUNDLE"/*.lproj; do
+for locale_dir in "$RES_ROOT"/*.lproj; do
   [ -d "$locale_dir" ] || continue
   for strings_file in Localizable.strings InfoPlist.strings; do
     if [ ! -f "$locale_dir/$strings_file" ]; then
@@ -170,27 +175,27 @@ for locale_dir in "$RES_BUNDLE"/*.lproj; do
   LOCALIZATION_COUNT=$((LOCALIZATION_COUNT + 1))
 done
 if [ "$LOCALIZATION_COUNT" -eq 0 ]; then
-  echo "!! no compiled localizations in SwiftPM resource bundle at $RES_BUNDLE" >&2
+  echo "!! no compiled localizations in SwiftPM resource bundle at $RES_ROOT" >&2
   exit 1
 fi
-if [ -d "$RES_BUNDLE/Changelog" ]; then
-  cp -R "$RES_BUNDLE/Changelog" "$APP/Contents/Resources/"
+if [ -d "$RES_ROOT/Changelog" ]; then
+  cp -R "$RES_ROOT/Changelog" "$APP/Contents/Resources/"
 else
-  echo "!! missing Changelog/ in SwiftPM resource bundle at $RES_BUNDLE" >&2
+  echo "!! missing Changelog/ in SwiftPM resource bundle at $RES_ROOT" >&2
   exit 1
 fi
-if [ -d "$RES_BUNDLE/Models" ]; then
-  cp -R "$RES_BUNDLE/Models" "$APP/Contents/Resources/"
+if [ -d "$RES_ROOT/Models" ]; then
+  cp -R "$RES_ROOT/Models" "$APP/Contents/Resources/"
 else
-  echo "!! missing Models/ in SwiftPM resource bundle at $RES_BUNDLE" >&2
+  echo "!! missing Models/ in SwiftPM resource bundle at $RES_ROOT" >&2
   exit 1
 fi
 
-if ! ls "$RES_BUNDLE"/*.metallib >/dev/null 2>&1; then
-  echo "!! no .metallib in SwiftPM resource bundle at $RES_BUNDLE — Metal effects would be missing" >&2
+if ! ls "$RES_ROOT"/*.metallib >/dev/null 2>&1; then
+  echo "!! no .metallib in SwiftPM resource bundle at $RES_ROOT — Metal effects would be missing" >&2
   exit 1
 fi
-cp "$RES_BUNDLE"/*.metallib "$APP/Contents/Resources/"
+cp "$RES_ROOT"/*.metallib "$APP/Contents/Resources/"
 
 if $INCLUDE_BUNDLED_SPEECH; then
   MLX_METALLIB="$ROOT/.build/$CONFIG/mlx.metallib"
