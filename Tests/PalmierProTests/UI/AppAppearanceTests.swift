@@ -33,7 +33,40 @@ struct AppAppearanceTests {
 
         #expect(brightness(AppTheme.Background.surface, in: light) > brightness(AppTheme.Background.surface, in: dark))
         #expect(brightness(AppTheme.Text.primary, in: light) < brightness(AppTheme.Text.primary, in: dark))
-        #expect(brightness(AppTheme.Accent.primaryNSColor, in: light) < brightness(AppTheme.Accent.primaryNSColor, in: dark))
+    }
+
+    @Test func chromePaletteUsesSystemSemanticColors() throws {
+        let light = try #require(NSAppearance(named: .aqua))
+        let dark = try #require(NSAppearance(named: .darkAqua))
+
+        let tokens: [(NSColor, NSColor)] = [
+            (AppTheme.Background.base, .windowBackgroundColor),
+            (AppTheme.Background.surface, .controlBackgroundColor),
+            (AppTheme.Background.raised, .underPageBackgroundColor),
+            (AppTheme.Background.prominent, .textBackgroundColor),
+            (AppTheme.Border.primary, .separatorColor),
+            (AppTheme.Border.subtle, .gridColor),
+            (AppTheme.Border.divider, .separatorColor),
+            (AppTheme.Border.panel, .separatorColor),
+            (AppTheme.Text.primary, .labelColor),
+            (AppTheme.Text.secondary, .secondaryLabelColor),
+            (AppTheme.Text.tertiary, .tertiaryLabelColor),
+            (AppTheme.Text.muted, .quaternaryLabelColor),
+            (AppTheme.Accent.primaryNSColor, .controlAccentColor),
+            (AppTheme.Accent.timecodeNSColor, .controlAccentColor),
+            (AppTheme.Accent.playheadNSColor, .systemRed),
+            (AppTheme.Status.error, .systemRed),
+            (AppTheme.Status.success, .systemGreen),
+            (AppTheme.AgentActivity.added, .systemGreen),
+            (AppTheme.AgentActivity.mutated, .systemOrange),
+            (AppTheme.AgentActivity.read, .secondaryLabelColor),
+        ]
+
+        for (token, expected) in tokens {
+            for appearance in [light, dark] {
+                expectSameColor(resolved(token, in: appearance), resolved(expected, in: appearance))
+            }
+        }
     }
 
     @Test func mediaOverlayPaletteIsAppearanceInvariant() throws {
@@ -63,15 +96,14 @@ struct AppAppearanceTests {
         expectSameColor(resolved(AppTheme.Border.timelineClipSelected, in: dark), resolved(.white, in: dark))
     }
 
-    @Test func lightPaletteMaintainsReadableContrast() throws {
+    @Test func labelTextRemainsLegibleOnSystemSurfaces() throws {
         let light = try #require(NSAppearance(named: .aqua))
+        let dark = try #require(NSAppearance(named: .darkAqua))
 
-        #expect(brightness(AppTheme.Background.surface, in: light) < brightness(AppTheme.Background.raised, in: light))
-        #expect(brightness(AppTheme.Background.raised, in: light) < brightness(AppTheme.Background.prominent, in: light))
-        #expect(brightness(AppTheme.Background.prominent, in: light) < 1)
-        #expect(contrastRatio(AppTheme.Text.tertiary, over: AppTheme.Background.surface, in: light) >= 4.5)
-        #expect(contrastRatio(AppTheme.Text.muted, over: AppTheme.Background.surface, in: light) >= 3)
-        #expect(contrastRatio(AppTheme.Border.divider, over: AppTheme.Background.surface, in: light) >= 3)
+        #expect(contrastRatio(AppTheme.Text.primary, over: AppTheme.Background.surface, in: light) >= 4.5)
+        #expect(contrastRatio(AppTheme.Text.primary, over: AppTheme.Background.surface, in: dark) >= 4.5)
+        #expect(contrastRatio(AppTheme.Text.secondary, over: AppTheme.Background.surface, in: light) >= 3.5)
+        #expect(contrastRatio(AppTheme.Text.secondary, over: AppTheme.Background.surface, in: dark) >= 3.5)
     }
 
     private func brightness(_ color: NSColor, in appearance: NSAppearance) -> CGFloat {

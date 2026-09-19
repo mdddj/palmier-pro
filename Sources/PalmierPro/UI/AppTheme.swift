@@ -12,22 +12,10 @@ enum AppTheme {
     // MARK: - Backgrounds
 
     enum Background {
-        static let base = AppTheme.adaptive(
-            light: NSColor(red: 241/255, green: 240/255, blue: 237/255, alpha: 1),
-            dark: NSColor(red: 24/255, green: 25/255, blue: 28/255, alpha: 1)
-        )
-        static let surface = AppTheme.adaptive(
-            light: NSColor(red: 245/255, green: 244/255, blue: 241/255, alpha: 1),
-            dark: NSColor(red: 30/255, green: 31/255, blue: 35/255, alpha: 1)
-        )
-        static let raised = AppTheme.adaptive(
-            light: NSColor(red: 249/255, green: 248/255, blue: 245/255, alpha: 1),
-            dark: NSColor(red: 38/255, green: 39/255, blue: 44/255, alpha: 1)
-        )
-        static let prominent = AppTheme.adaptive(
-            light: NSColor(red: 252/255, green: 251/255, blue: 248/255, alpha: 1),
-            dark: NSColor(red: 48/255, green: 49/255, blue: 55/255, alpha: 1)
-        )
+        static let base = NSColor.windowBackgroundColor
+        static let surface = NSColor.controlBackgroundColor
+        static let raised = NSColor.underPageBackgroundColor
+        static let prominent = NSColor.textBackgroundColor
 
         /// Alias — empty media slot is a raised plate.
         static let placeholder = raised
@@ -44,22 +32,10 @@ enum AppTheme {
     // MARK: - Borders
 
     enum Border {
-        static let primary = AppTheme.adaptive(
-            light: NSColor.black.withAlphaComponent(0.20),
-            dark: NSColor.white.withAlphaComponent(0.10)
-        )
-        static let subtle = AppTheme.adaptive(
-            light: NSColor.black.withAlphaComponent(0.14),
-            dark: NSColor.white.withAlphaComponent(0.07)
-        )
-        static let divider = AppTheme.adaptive(
-            light: NSColor.black.withAlphaComponent(0.44),
-            dark: NSColor.white.withAlphaComponent(0.24)
-        )
-        static let panel = AppTheme.adaptive(
-            light: NSColor.black.withAlphaComponent(0.18),
-            dark: .black
-        )
+        static let primary = NSColor.separatorColor
+        static let subtle = NSColor.gridColor
+        static let divider = NSColor.separatorColor
+        static let panel = NSColor.separatorColor
         static let timelineClip = AppTheme.adaptive(light: .white, dark: .black)
         static let timelineClipSelected = AppTheme.adaptive(light: .black, dark: .white)
         static let timelineMarker = AppTheme.adaptive(light: .white, dark: .black)
@@ -82,32 +58,22 @@ enum AppTheme {
     // MARK: - Accent
 
     enum Accent {
-        static let timecodeNSColor = AppTheme.adaptive(
-            light: NSColor(red: 0.58, green: 0.29, blue: 0.02, alpha: 1),
-            dark: NSColor(red: 0.95, green: 0.6, blue: 0.2, alpha: 1)
-        )
+        static let timecodeNSColor = NSColor.controlAccentColor
         static let timecodeColor = Color(timecodeNSColor)
 
-        static let primaryNSColor = AppTheme.adaptive(
-            light: NSColor(red: 48/255, green: 48/255, blue: 48/255, alpha: 1),
-            dark: NSColor(red: 236/255, green: 236/255, blue: 236/255, alpha: 1)
-        )
+        static let primaryNSColor = NSColor.controlAccentColor
         static let primary = Color(primaryNSColor)
 
-        static let playheadNSColor = AppTheme.adaptive(
-            light: NSColor(srgbRed: 1.0, green: 0.18, blue: 0.16, alpha: 1),
-            dark: NSColor(srgbRed: 1.0, green: 0.32, blue: 0.30, alpha: 1)
-        )
+        static let playheadNSColor = NSColor.systemRed
 
         static let link = Color(nsColor: .linkColor)
 
-        /// Vibrant highlight used by the onboarding tour spotlight.
-        static let spotlight = Color(red: 1.0, green: 0.27, blue: 0.27)
+        static let spotlight = Color(nsColor: .controlAccentColor)
         static let spotlightGradient = LinearGradient(
             colors: [
-                Color(red: 1.0, green: 0.34, blue: 0.30),
-                Color(red: 0.95, green: 0.15, blue: 0.28),
-                Color(red: 1.0, green: 0.48, blue: 0.22),
+                Color(nsColor: .controlAccentColor),
+                Color(nsColor: .controlAccentColor).opacity(0.75),
+                Color(nsColor: .controlAccentColor).opacity(0.5),
             ],
             startPoint: .topLeading,
             endPoint: .bottomTrailing
@@ -169,17 +135,11 @@ enum AppTheme {
     // MARK: - Status
 
     enum Status {
-        static let error = AppTheme.adaptive(
-            light: NSColor(red: 0.70, green: 0.14, blue: 0.09, alpha: 1),
-            dark: NSColor(red: 0xE5/255.0, green: 0x4F/255.0, blue: 0x4F/255.0, alpha: 1)
-        )
+        static let error = NSColor.systemRed
 
         static var errorColor: Color { Color(error) }
 
-        static let success = AppTheme.adaptive(
-            light: NSColor(red: 0.09, green: 0.45, blue: 0.28, alpha: 1),
-            dark: NSColor(red: 0x4F/255.0, green: 0xB8/255.0, blue: 0x5F/255.0, alpha: 1)
-        )
+        static let success = NSColor.systemGreen
 
         static var successColor: Color { Color(success) }
 
@@ -193,12 +153,7 @@ enum AppTheme {
     enum AgentActivity {
         static let added = NSColor.systemGreen
         static let mutated = NSColor.systemOrange
-        static let read = NSColor(
-            srgbRed: 0x64 / 255.0,
-            green: 0x74 / 255.0,
-            blue: 0x8B / 255.0,
-            alpha: 1
-        )
+        static let read = NSColor.secondaryLabelColor
         static let readFill = read.withAlphaComponent(AppTheme.Opacity.faint)
         static let changeGlowOpacity: Float = 0.8
         static let changeGlowRadius: CGFloat = 8
@@ -223,22 +178,10 @@ enum AppTheme {
     // MARK: - Text
 
     enum Text {
-        static let primary = AppTheme.adaptive(
-            light: NSColor.black.withAlphaComponent(0.92),
-            dark: NSColor.white.withAlphaComponent(0.98)
-        )
-        static let secondary = AppTheme.adaptive(
-            light: NSColor.black.withAlphaComponent(0.78),
-            dark: NSColor.white.withAlphaComponent(0.84)
-        )
-        static let tertiary = AppTheme.adaptive(
-            light: NSColor.black.withAlphaComponent(0.66),
-            dark: NSColor.white.withAlphaComponent(0.68)
-        )
-        static let muted = AppTheme.adaptive(
-            light: NSColor.black.withAlphaComponent(0.46),
-            dark: NSColor.white.withAlphaComponent(0.46)
-        )
+        static let primary = NSColor.labelColor
+        static let secondary = NSColor.secondaryLabelColor
+        static let tertiary = NSColor.tertiaryLabelColor
+        static let muted = NSColor.quaternaryLabelColor
 
         static var primaryColor: Color { Color(primary) }
         static var secondaryColor: Color { Color(secondary) }
@@ -367,10 +310,10 @@ enum AppTheme {
         static let md: CGFloat = 13
         static let mdLg: CGFloat = 14
         static let lg: CGFloat = 15
-        static let xl: CGFloat = 18
+        static let xl: CGFloat = 17
         static let title1: CGFloat = 22
-        static let title2: CGFloat = 28
-        static let display: CGFloat = 36
+        static let title2: CGFloat = 26
+        static let display: CGFloat = 34
     }
 
     // MARK: - Font weights
@@ -388,7 +331,6 @@ enum AppTheme {
     enum Tracking {
         static let tight: CGFloat = -0.5
         static let normal: CGFloat = 0
-        static let wide: CGFloat = 1.5
     }
 
     // MARK: - Icon sizes (square frame dimensions)
@@ -550,8 +492,7 @@ enum AppTheme {
     }
 
     enum Shadow {
-        static let sm = ShadowStyle(color: .black.opacity(0.3), radius: 1, x: 0, y: 0.5)
-        static let md = ShadowStyle(color: .black.opacity(0.3), radius: 4, x: 0, y: 2)
+        static let sm = ShadowStyle(color: .black.opacity(0.20), radius: 1, x: 0, y: 0.5)
         static let lg = ShadowStyle(color: .black.opacity(0.25), radius: 24, x: 0, y: 8)
         static let overlay = ShadowStyle(
             color: .black.opacity(Opacity.strong),
